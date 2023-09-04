@@ -3,11 +3,12 @@ require('dotenv').config();
 const { OpenAI } = require('openai');
 const app = express();
 app.use(express.json());
-
+const cors = require('cors')
 // API Configuration
 // This code is for v4 of the openai package: npmjs.com/package/openai
 // import OpenAI from "openai";
-
+app.use(cors())
+app.options('*',cors())
 const openai = new OpenAI({
   apiKey: process.env.apiKey,
 });
