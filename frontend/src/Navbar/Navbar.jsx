@@ -31,7 +31,7 @@ interface Props {
   children: React.ReactNode;
 }
 
-const Links = ["Dashboard", "Projects", "Team"];
+const Links = ["DSA", "Play Quiz", "Generate Questions"];
 
 const NavLink = (props: Props) => {
   const { children } = props;
@@ -43,7 +43,7 @@ const NavLink = (props: Props) => {
       rounded={"md"}
       _hover={{
         textDecoration: "none",
-        bg: useColorModeValue("gray.200", "gray.700"),
+        // bg: useColorModeValue("gray.200", "gray.700"),
       }}
       href={"#"}
     >
@@ -58,7 +58,11 @@ export default function WithAction() {
 
   return (
     <>
-      <Box bg={useColorModeValue("gray.100", "gray.900")} px={4} py={3}>
+      <Box
+        // bg={useColorModeValue("gray.100", "gray.900")}
+        px={5}
+        py={3}
+      >
         <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
           <Box className="logo">QGenius</Box>
           <Flex alignItems={"center"} spacing={3} sx={{ gap: "1em" }}>
@@ -83,6 +87,8 @@ export default function WithAction() {
                   as={"nav"}
                   spacing={4}
                   display={{ base: "none", md: "flex" }}
+                  fontSize="1.1rem"
+                  fontWeight={600}
                 >
                   {Links.map((link) => (
                     <NavLink key={link}>{link}</NavLink>
