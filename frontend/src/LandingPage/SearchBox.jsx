@@ -5,8 +5,17 @@ import { Button, Input, InputGroup, InputRightElement } from "@chakra-ui/react";
 export default function SearchBox({ SetAnswer }) {
   const [show, setShow] = React.useState(false);
   const [searchQuery, setSearchQuery] = React.useState("");
+  const fetchData = async (text) => {
+    const responce = await fetch(
+      "http://localhost:8082/askmeanything?q=" + text
+    );
+    console.log(responce)
+    // const data = await responce.json();
+    // console.log("responce answer ", data);
+  };
   const handleSearchButton = () => {
-    SetAnswer();
+    fetchData(searchQuery);
+    // SetAnswer();
     console.log(searchQuery);
   };
 
