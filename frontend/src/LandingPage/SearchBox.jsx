@@ -9,9 +9,10 @@ export default function SearchBox({ SetAnswer }) {
     const responce = await fetch(
       "http://localhost:8082/askmeanything?q=" + text
     );
-    console.log(responce)
-    // const data = await responce.json();
-    // console.log("responce answer ", data);
+    // console.log(responce)
+    const data = await responce.json();
+    console.log("responce answer ", data.ans);
+    SetAnswer(data.ans);
   };
   const handleSearchButton = () => {
     fetchData(searchQuery);
