@@ -22,6 +22,19 @@ export default function DSA() {
     subtopic: "",
     difficulty: "",
   });
+  const [data, setData] = useState("");
+  const handleSearchData = (data) => {
+    async function fetchData(selectedOptions) {
+      let responce = await fetch(
+        `http://localhost:8082/generate-dsa-questions/?difficulty=${selectedOptions.difficulty}&topic=${selectedOptions.subtopic}&numofquestion=1`
+      );
+      responce = await responce.json();
+      setData(responce.ans);
+      console.log(responce, "responce dsa");
+    }
+    console.log(data, "endpoints");
+    fetchData(data);
+  };
   return (
     <ChakraProvider>
       <Navbar />
@@ -54,8 +67,9 @@ export default function DSA() {
         type="dsa"
         setSelectedOptions={setSelectedOptions}
         selectedOptions={selectedOptions}
+        handleSearchData={handleSearchData}
       />
-      <QuestionSection selectedOptions={selectedOptions} />
+      <QuestionSection data={data} />
       <Footer />
     </ChakraProvider>
   );
