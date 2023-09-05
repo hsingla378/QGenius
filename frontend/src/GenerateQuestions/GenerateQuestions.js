@@ -40,7 +40,7 @@ export default function Question() {
             lineHeight={"110%"}
           >
             Explore Random Questions{" "}
-            <Text as={"span"} color={"orange.400"}>
+            <Text as={"span"} color={"green.400"}>
               - Tailored to Your Learnin
             </Text>
           </Heading>

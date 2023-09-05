@@ -38,7 +38,7 @@ export default function DSA() {
             lineHeight={"110%"}
           >
             Generate Random DSA Questions{" "}
-            <Text as={"span"} color={"orange.400"}>
+            <Text as={"span"} color={"green.500"}>
               - Tailored to Your Needs
             </Text>
           </Heading>

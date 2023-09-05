@@ -19,7 +19,6 @@ import {
   Skeleton,
 } from "@chakra-ui/react";
 
-
 // interface IBlogTags {
 //   tags: Array<string>
 //   marginTop?: SpaceProps['marginTop']
@@ -67,12 +66,19 @@ const BlogAuthor = (props) => {
   );
 };
 
-const SearchAnswer = ({ answer = "", queryAsked = "", loading }) => {
+const SearchAnswer = ({
+  answer = "",
+  queryAsked = "",
+  loading,
+  heading,
+  title,
+}) => {
   let updatedQueryAsked =
     queryAsked.charAt(0).toUpperCase() + queryAsked.slice(1);
   console.log(updatedQueryAsked);
   return (
     <Container maxW={"7xl"} p="12" border="2px" my={10} rounded="lg">
+      <Heading>{heading}</Heading>
       {loading ? (
         <Stack>
           <Skeleton height="20px" />
@@ -81,6 +87,9 @@ const SearchAnswer = ({ answer = "", queryAsked = "", loading }) => {
         </Stack>
       ) : (
         <VStack paddingTop="40px" spacing="2" alignItems="flex-start">
+          <Text fontSize="1.3rem" fontWeight="500">
+            {title}
+          </Text>
           <Heading as="h2" size="lg" mb={4}>
             {updatedQueryAsked}
           </Heading>

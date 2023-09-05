@@ -45,7 +45,7 @@ export default function CallToActionWithVideo({
             fontWeight={600}
             fontSize={{ base: "3xl", sm: "4xl", lg: "6xl" }}
           >
-            <Text as={"span"} color={"red.400"}>
+            <Text as={"span"} color={"green.500"}>
               Enhance your
             </Text>
             <br />
@@ -59,14 +59,14 @@ export default function CallToActionWithVideo({
                 position: "absolute",
                 bottom: 1,
                 left: 0,
-                bg: "red.400",
+                bg: "green.500",
                 zIndex: -1,
               }}
             >
               learning experience
             </Text>
             <br />
-            <Text as={"span"} color={"red.400"}>
+            <Text as={"span"} color={"green.500"}>
               with QGenius!
             </Text>
           </Heading>
@@ -89,9 +89,9 @@ export default function CallToActionWithVideo({
               size={"lg"}
               fontWeight={"normal"}
               px={6}
-              colorScheme={"red"}
-              bg={"red.400"}
-              _hover={{ bg: "red.500" }}
+              colorScheme={"green"}
+              bg={"green.500"}
+              _hover={{ bg: "green.500" }}
               onClick={handleToogleClick}
             >
               {toggleResonce ? "Hide responce" : "Show responce"}
@@ -121,7 +121,7 @@ export default function CallToActionWithVideo({
             top={"-20%"}
             left={0}
             zIndex={-1}
-            color={useColorModeValue("red.50", "red.400")}
+            color={useColorModeValue("green.50", "green.500")}
           />
           <Box
             position={"relative"}
@@ -162,7 +162,7 @@ export default function CallToActionWithVideo({
               Hampden-Sydney College in Virginia, looked up one of the more
               obscure Latin words, consectetur, from a Lorem Ipsum passage, and
               going through the cites of the word in classical literature,
-              discovered the undoubtable source. Lorem Ipsum comes from sections
+              discovegreen the undoubtable source. Lorem Ipsum comes from sections
               1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The
               Extremes of Good and Evil) by Cicero, written in 45 BC. This book
               is a treatise on the theory of ethics, very popular during the
@@ -173,12 +173,12 @@ export default function CallToActionWithVideo({
               et Malorum" by Cicero are also reproduced in their exact original
               form, accompanied by English versions from the 1914 translation by
               H. Rackham. Where can I get some? There are many variations of
-              passages of Lorem Ipsum available, but the majority have suffered
+              passages of Lorem Ipsum available, but the majority have suffegreen
               alteration in some form, by injected humour, or randomised words
               which don't look even slightly believable. If you are going to use
               a passage of Lorem Ipsum, you need to be sure there isn't anything
               embarrassing hidden in the middle of text. All the Lorem Ipsum
-              generators on the Internet tend to repeat predefined chunks as
+              generators on the Internet tend to repeat pgreenefined chunks as
               necessary, making this the first true generator on the Internet.
               It uses a dictionary of over 200 Latin words, combined with a
               handful of model sentence structures, to generate Lorem Ipsum
