@@ -28,7 +28,7 @@ import Prism from 'prismjs';
 //   tags: any[]
 // }
 
-const BlogTags = (props: Props) => {
+const BlogTags = (props) => {
   const { marginTop = 0, tags } = props;
 
   return (
@@ -49,7 +49,7 @@ const BlogTags = (props: Props) => {
 //   name: string
 // }
 
-const BlogAuthor = (props: BlogAuthorProps) => {
+const BlogAuthor = (props) => {
   return (
     <HStack marginTop="2" spacing="2" display="flex" alignItems="center">
       <Image
