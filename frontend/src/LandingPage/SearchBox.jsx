@@ -96,7 +96,7 @@ export default function SearchBox({ SetAnswer, setQueryAsked, setLoading }) {
           <Search2Icon
             w={8}
             h={8}
-            color="orange.500"
+            color="green.500"
             onClick={handleSearchButton}
           />
         </InputRightElement>
