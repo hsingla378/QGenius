@@ -19,7 +19,8 @@ import {
   FcDonate,
   FcManager,
 } from "react-icons/fc";
-
+import { Link } from "@chakra-ui/react";
+import { ExternalLinkIcon } from "@chakra-ui/icons";
 // interface CardProps {
 //   heading: string
 //   description: string
@@ -27,7 +28,7 @@ import {
 //   href: string
 // }
 
-const Card = ({ heading, description, icon, href }: CardProps) => {
+const Card = ({ heading, description, icon, href }) => {
   return (
     <Box
       maxW={{ base: "full", md: "275px" }}
@@ -78,30 +79,36 @@ export default function gridListWith() {
 
       <Container maxW={"5xl"} my={12}>
         <Flex flexWrap="wrap" gridGap={6} justify="center">
-          <Card
-            heading={"DSA"}
-            icon={<Icon as={FcAssistant} w={10} h={10} />}
-            description={
-              "Lorem ipsum dolor sit amet catetur, adipisicing elit."
-            }
-            href={"#"}
-          />
-          <Card
-            heading={"Quiz"}
-            icon={<Icon as={FcCollaboration} w={10} h={10} />}
-            description={
-              "Lorem ipsum dolor sit amet catetur, adipisicing elit."
-            }
-            href={"#"}
-          />
-          <Card
-            heading={"Questions"}
-            icon={<Icon as={FcDonate} w={10} h={10} />}
-            description={
-              "Lorem ipsum dolor sit amet catetur, adipisicing elit."
-            }
-            href={"#"}
-          />
+          <Link href="/dsa">
+            <Card
+              onClick={() => console.log("helloo")}
+              heading={"DSA"}
+              icon={<Icon as={FcAssistant} w={10} h={10} />}
+              description={
+                "Lorem asdipsum dolor sit amet catetur, adipisicing elit."
+              }
+            />
+          </Link>
+          <span onClick={() => console.log("ello")}>
+            <Card
+              heading={"Quiz"}
+              icon={<Icon as={FcCollaboration} w={10} h={10} />}
+              description={
+                "Lorem ipsum dolor sit amet catetur, adipisicing elit."
+              }
+              href={"#"}
+            />
+          </span>
+          <span onClick={() => console.log("ello")}>
+            <Card
+              heading={"Questions"}
+              icon={<Icon as={FcDonate} w={10} h={10} />}
+              description={
+                "Lorem ipsum dolor sit amet catetur, adipisicing elit."
+              }
+              href={"#"}
+            />
+          </span>
         </Flex>
       </Container>
     </Box>
