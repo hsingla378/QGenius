@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { Button, Input, InputGroup, InputRightElement } from "@chakra-ui/react";
+import { Search2Icon } from "@chakra-ui/icons";
 
-export default function SearchBox({ SetAnswer, setQueryAsked }) {
+export default function SearchBox({ SetAnswer, setQueryAsked, setLoading }) {
   const [searchQuery, setSearchQuery] = useState("");
   const [placeholderIndex, setPlaceholderIndex] = useState(0);
   const [placeholderText, setPlaceholderText] = useState("");
+  // const [loading, setLoading] = useState(false);
   const sentences = [
     "What does OOP stand for?",
     " What is SQL used for?",
@@ -14,6 +16,7 @@ export default function SearchBox({ SetAnswer, setQueryAsked }) {
   ];
 
   const fetchData = async (text) => {
+    setLoading(true);
     const response = await fetch(
       "http://localhost:8082/askmeanything?q=" + text
     );
@@ -21,9 +24,11 @@ export default function SearchBox({ SetAnswer, setQueryAsked }) {
     console.log("response answer", data.ans);
     SetAnswer(data.ans);
     setQueryAsked(text);
+    setLoading(false);
   };
 
-  const handleSearchButton = () => {
+  const handleSearchButton = (e) => {
+    e.preventDefault(); // prevent
     fetchData(searchQuery);
     console.log(searchQuery);
   };
@@ -73,19 +78,28 @@ export default function SearchBox({ SetAnswer, setQueryAsked }) {
   }, [placeholderIndex]);
 
   return (
-    <InputGroup size="md" className="hero-search">
-      <Input
-        pr="4.5rem"
-        type="text"
-        placeholder={placeholderText}
-        onChange={handleSearchQuery}
-        value={searchQuery}
-      />
-      <InputRightElement width="4.5rem">
-        <Button h="1.75rem" size="sm" onClick={handleSearchButton}>
-          Search
-        </Button>
-      </InputRightElement>
-    </InputGroup>
+    <form onSubmit={handleSearchButton}>
+      <InputGroup size="md" className="hero-search">
+        <Input
+          p="1.7rem"
+          type="text"
+          placeholder={placeholderText}
+          onChange={handleSearchQuery}
+          value={searchQuery}
+          onSubmit={handleSearchButton}
+        />
+        <InputRightElement width="4.5rem" h="100%">
+          {/* <Button h="1.75rem" size="sm" onClick={handleSearchButton}>
+            Search
+          </Button> */}
+          <Search2Icon
+            w={8}
+            h={8}
+            color="red.500"
+            onClick={handleSearchButton}
+          />
+        </InputRightElement>
+      </InputGroup>
+    </form>
   );
 }

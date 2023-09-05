@@ -24,6 +24,7 @@ import {
   AddIcon,
   SunIcon,
   MoonIcon,
+  ChatIcon,
 } from "@chakra-ui/icons";
 import { Link as ReactRouterLink } from "react-router-dom";
 import { Link as ChakraLink, LinkProps } from "@chakra-ui/react";
@@ -55,13 +56,15 @@ const NavLink = (props) => {
   );
 };
 
-export default function WithAction() {
+export default function WithAction({ loading }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { colorMode, toggleColorMode } = useColorMode();
 
   return (
     <>
-      <Progress size="sm" isIndeterminate position="sticky" top={0} />
+      {loading && (
+        <Progress size="sm" isIndeterminate position="sticky" top={0} />
+      )}
       <Box
         // bg={useColorModeValue("gray.100", "gray.900")}
         px={5}
@@ -71,10 +74,10 @@ export default function WithAction() {
           <ChakraLink
             as={ReactRouterLink}
             to="/"
-            className="logo"
-            sx={{ textDecoration: "none" }}
+            className="logo-container no-text-decoration"
           >
-            <Box>QGenius</Box>
+            <ChatIcon className="logo-icon" w={8} h={8} color="red.500" />
+            <Box className="logo">QGenius</Box>
           </ChakraLink>
 
           <Flex alignItems={"center"} spacing={3} sx={{ gap: "1em" }}>

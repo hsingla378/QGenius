@@ -32,12 +32,14 @@ import { Link as ChakraLink, LinkProps } from "@chakra-ui/react";
 const Card = ({ heading, description, icon, href }) => {
   return (
     <Box
-      maxW={{ base: "full", md: "275px" }}
+      maxW={{ base: "full", md: "300px" }}
       w={"full"}
       borderWidth="1px"
       borderRadius="lg"
       overflow="hidden"
       p={5}
+      h="100%"
+      textDecor="none"
     >
       <Stack align={"start"} spacing={2}>
         <Flex
@@ -52,12 +54,12 @@ const Card = ({ heading, description, icon, href }) => {
           {icon}
         </Flex>
         <Box mt={2}>
-          <Heading size="md">{heading}</Heading>
-          <Text mt={1} fontSize={"sm"}>
+          <Heading fontSize="1.4rem">{heading}</Heading>
+          <Text mt={1} fontSize="1.1rem" color="gray.400">
             {description}
           </Text>
         </Box>
-        <Button variant={"link"} colorScheme={"blue"} size={"sm"}>
+        <Button variant={"link"} colorScheme={"blue"} size={"md"}>
           Learn more
         </Button>
       </Stack>
@@ -70,43 +72,55 @@ export default function gridListWith() {
     <Box p={12}>
       <Stack spacing={4} as={Container} maxW={"3xl"} textAlign={"center"}>
         <Heading fontSize={{ base: "2xl", sm: "4xl" }} fontWeight={"bold"}>
-          Short heading
+          Key Features
         </Heading>
         <Text color={"gray.500"} fontSize={{ base: "sm", sm: "lg" }}>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis
-          obcaecati ut cupiditate pariatur, dignissimos, placeat amet officiis.
+          Explore the powerful features of QGenius that make learning and
+          preparation easy.
         </Text>
       </Stack>
 
-      <Container maxW={"5xl"} my={12}>
-        <Flex flexWrap="wrap" gridGap={6} justify="center">
-          <ChakraLink as={ReactRouterLink} to="/dsa">
+      <Container maxW={"5xl"} mt={12}>
+        <Flex flexWrap="wrap" gridGap={6} justify="center" alignItems="stretch">
+          <ChakraLink
+            as={ReactRouterLink}
+            to="/dsa"
+            className="no-text-decoration"
+          >
             <Card
-              heading={"DSA"}
+              heading={"Generate DSA Questions"}
               icon={<Icon as={FcAssistant} w={10} h={10} />}
               description={
-                "Lorem ipsum dolor sit amet catetur, adipisicing elit."
+                "QGenius allows you to generate DSA (Data Structures and Algorithms) questions effortlessly. Practice and improve your problem-solving skills."
               }
               href={"#"}
             />
           </ChakraLink>
-          <ChakraLink as={ReactRouterLink} to="/quiz">
+          <ChakraLink
+            as={ReactRouterLink}
+            to="/quiz"
+            className="no-text-decoration"
+          >
             <Card
-              heading={"Quiz"}
+              heading={"Play Interactive Quizzes"}
               icon={<Icon as={FcCollaboration} w={10} h={10} />}
               description={
-                "Lorem ipsum dolor sit amet catetur, adipisicing elit."
+                "Engage in interactive quizzes on various subjects. Test your knowledge, challenge yourself, and have fun while learning."
               }
               href={"#"}
             />
           </ChakraLink>
 
-          <ChakraLink as={ReactRouterLink} to="/questions-generator">
+          <ChakraLink
+            as={ReactRouterLink}
+            to="/questions-generator"
+            className="no-text-decoration"
+          >
             <Card
-              heading={"Questions"}
+              heading={"Prepare For Interviews"}
               icon={<Icon as={FcDonate} w={10} h={10} />}
               description={
-                "Lorem ipsum dolor sit amet catetur, adipisicing elit."
+                "QGenius provides a vast collection of random interview questions to help you prepare for job interviews. Boost your confidence and ace the interview."
               }
               href={"#"}
             />

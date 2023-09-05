@@ -1,14 +1,63 @@
-import React from "react";
-import Navbar from "../Navbar/Navbar";
-import { ChakraProvider } from "@chakra-ui/react";
+"use client";
 
-function DSA() {
+import {
+  Flex,
+  Container,
+  Heading,
+  Stack,
+  Text,
+  Button,
+  Icon,
+  IconProps,
+  ChakraProvider,
+} from "@chakra-ui/react";
+import Navbar from "../Navbar/Navbar";
+import Footer from "../Footer/Footer";
+
+export default function DSA() {
   return (
     <ChakraProvider>
       <Navbar />
-      <div>DSA</div>;
+      <Container maxW={"5xl"}>
+        <Stack
+          textAlign={"center"}
+          align={"center"}
+          spacing={{ base: 8, md: 10 }}
+          py={{ base: 20, md: 28 }}
+        >
+          <Heading
+            fontWeight={600}
+            fontSize={{ base: "3xl", sm: "4xl", md: "6xl" }}
+            lineHeight={"110%"}
+          >
+            Generate Random DSA Questions{" "}
+            <Text as={"span"} color={"orange.400"}>
+              - Tailored to Your Needs
+            </Text>
+          </Heading>
+          <Text color={"gray.500"} maxW={"3xl"}>
+            QGenius allows you to generate random Data Structures and Algorithms
+            (DSA) questions. Select your preferred topic, difficulty level, and
+            get questions tailored to your needs. You can also access detailed
+            solutions, constraints, test cases, correct answers, FAQs, and more.
+          </Text>
+          <Stack spacing={6} direction={"row"}>
+            <Button
+              rounded={"full"}
+              px={6}
+              colorScheme={"orange"}
+              bg={"orange.400"}
+              _hover={{ bg: "orange.500" }}
+            >
+              Get started
+            </Button>
+            <Button rounded={"full"} px={6}>
+              Learn more
+            </Button>
+          </Stack>
+        </Stack>
+      </Container>
+      <Footer />
     </ChakraProvider>
   );
 }
-
-export default DSA;
