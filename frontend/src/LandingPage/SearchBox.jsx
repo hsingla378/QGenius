@@ -87,6 +87,7 @@ export default function SearchBox({ SetAnswer, setQueryAsked, setLoading }) {
           onChange={handleSearchQuery}
           value={searchQuery}
           onSubmit={handleSearchButton}
+          rounded={"full"}
         />
         <InputRightElement width="4.5rem" h="100%">
           {/* <Button h="1.75rem" size="sm" onClick={handleSearchButton}>

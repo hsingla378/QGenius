@@ -16,8 +16,8 @@ import {
 } from "@chakra-ui/react";
 import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
+import { DropDown } from "../DropDown/DropDown";
 import "./Quiz.css";
-import { quizData } from "./quizData";
 
 export default function Quiz() {
   return (
@@ -46,45 +46,9 @@ export default function Quiz() {
             platform will generate random quiz questions tailored to your
             preferences. Test your knowledge and enjoy the quiz experience.
           </Text>
-          <Stack spacing={6} direction={"row"}>
-            <Button
-              rounded={"full"}
-              px={6}
-              colorScheme={"orange"}
-              bg={"orange.400"}
-              _hover={{ bg: "orange.500" }}
-            >
-              Get started
-            </Button>
-            <Button rounded={"full"} px={6}>
-              Learn more
-            </Button>
-          </Stack>
         </Stack>
       </Container>
-      <Box className="query-box">
-        <Container my={4} w="100%">
-          <Select placeholder="Select Topic">
-            {quizData.map((data) => {
-              return <option value={data.topic}>{data.topic}</option>;
-            })}
-          </Select>
-        </Container>
-        <Container my={4}>
-          <Select placeholder="Select Difficulty">
-            {quizData[0].subtopics.map((subtopic) => {
-              return <option value={subtopic}>{subtopic}</option>;
-            })}
-          </Select>
-        </Container>
-        <Container my={4}>
-          <Select placeholder="Select Difficulty">
-            <option value="option1">Easy</option>
-            <option value="option2">Medium</option>
-            <option value="option3">Difficult</option>
-          </Select>
-        </Container>
-      </Box>
+      <DropDown type="quiz" />
       <Footer />
     </ChakraProvider>
   );

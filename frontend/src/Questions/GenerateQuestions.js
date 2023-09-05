@@ -13,6 +13,7 @@ import {
 } from "@chakra-ui/react";
 import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
+import { DropDown } from "../DropDown/DropDown";
 
 export default function Question() {
   return (
@@ -42,23 +43,10 @@ export default function Question() {
             Learn and prepare with these questions to enhance your knowledge and
             interview readiness.
           </Text>
-          <Stack spacing={6} direction={"row"}>
-            <Button
-              rounded={"full"}
-              px={6}
-              colorScheme={"orange"}
-              bg={"orange.400"}
-              _hover={{ bg: "orange.500" }}
-            >
-              Get started
-            </Button>
-            <Button rounded={"full"} px={6}>
-              Learn more
-            </Button>
-          </Stack>
         </Stack>
-        <Footer />
       </Container>
+      <DropDown type="questions" />
+      <Footer />
     </ChakraProvider>
   );
 }

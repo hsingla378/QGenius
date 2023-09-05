@@ -13,6 +13,7 @@ import {
 } from "@chakra-ui/react";
 import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
+import { DropDown } from "../DropDown/DropDown";
 
 export default function DSA() {
   return (
@@ -41,22 +42,10 @@ export default function DSA() {
             get questions tailored to your needs. You can also access detailed
             solutions, constraints, test cases, correct answers, FAQs, and more.
           </Text>
-          <Stack spacing={6} direction={"row"}>
-            <Button
-              rounded={"full"}
-              px={6}
-              colorScheme={"orange"}
-              bg={"orange.400"}
-              _hover={{ bg: "orange.500" }}
-            >
-              Get started
-            </Button>
-            <Button rounded={"full"} px={6}>
-              Learn more
-            </Button>
-          </Stack>
         </Stack>
       </Container>
+      <DropDown type="dsa" />
+
       <Footer />
     </ChakraProvider>
   );
