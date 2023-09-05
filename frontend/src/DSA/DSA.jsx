@@ -15,6 +15,7 @@ import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
 import { DropDown } from "../DropDown/DropDown";
 import { useState } from "react";
+import QuestionSection from "./QuestionSection";
 
 export default function DSA() {
   const [selectedOptions, setSelectedOptions] = useState({
@@ -54,7 +55,7 @@ export default function DSA() {
         setSelectedOptions={setSelectedOptions}
         selectedOptions={selectedOptions}
       />
-      {console.log("check data", selectedOptions)}
+      <QuestionSection selectedOptions={selectedOptions} />
       <Footer />
     </ChakraProvider>
   );

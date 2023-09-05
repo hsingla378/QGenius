@@ -13,12 +13,16 @@ import {
   Select,
   Box,
   Input,
+  RadioGroup,
+  Radio,
+  StackDivider,
 } from "@chakra-ui/react";
 import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
 import { DropDown } from "../DropDown/DropDown";
 import "./Quiz.css";
 import { useState } from "react";
+import QuestionCointainer from "./QuestionCointainer";
 
 export default function Quiz() {
   const [selectedOptions, setSelectedOptions] = useState({
@@ -26,6 +30,30 @@ export default function Quiz() {
     subtopic: "",
     difficulty: "",
   });
+  const data = [
+    {
+      question:
+        "Design a low-level class structure for an Online Polling System.",
+      options: [
+        "Interpreter pattern",
+        "Iterator pattern",
+        "Bridge pattern",
+        "Observer pattern",
+      ],
+      answer: "Observer pattern",
+    },
+    {
+      question:
+        "Design a low-level class structure for a Flight Booking System.",
+      options: [
+        "Chain of Responsibility pattern",
+        "Prototype pattern",
+        "Visitor pattern",
+        "Adapter pattern",
+      ],
+      answer: "Adapter pattern",
+    },
+  ];
   return (
     <ChakraProvider>
       <Navbar />
@@ -59,6 +87,22 @@ export default function Quiz() {
         setSelectedOptions={setSelectedOptions}
         selectedOptions={selectedOptions}
       />
+      {data.map((element) => {
+        return (
+          <QuestionCointainer>
+            <h1>{element.question}</h1>
+            <RadioGroup defaultValue="">
+              <Stack>
+                <Radio value="1">{element.options[0]}</Radio>
+                <Radio value="2">{element.options[1]}</Radio>
+                <Radio value="3">{element.options[2]}</Radio>
+                <Radio value="3">{element.options[3]}</Radio>
+              </Stack>
+            </RadioGroup>
+          </QuestionCointainer>
+        );
+      })}
+
       <Footer />
     </ChakraProvider>
   );

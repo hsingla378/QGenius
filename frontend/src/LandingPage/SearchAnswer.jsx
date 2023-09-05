@@ -19,6 +19,17 @@ import {
   Skeleton,
 } from "@chakra-ui/react";
 
+
+// interface IBlogTags {
+//   tags: Array<string>
+//   marginTop?: SpaceProps['marginTop']
+// }
+
+// interface Props {
+//   marginTop?: number
+//   tags: any[]
+// }
+
 const BlogTags = (props) => {
   const { marginTop = 0, tags } = props;
 
@@ -34,6 +45,11 @@ const BlogTags = (props) => {
     </HStack>
   );
 };
+
+// interface BlogAuthorProps {
+//   date: Date
+//   name: string
+// }
 
 const BlogAuthor = (props) => {
   return (
@@ -51,7 +67,7 @@ const BlogAuthor = (props) => {
   );
 };
 
-const SearchAnswer = ({ answer, queryAsked, loading }) => {
+const SearchAnswer = ({ answer = "", queryAsked = "", loading }) => {
   let updatedQueryAsked =
     queryAsked.charAt(0).toUpperCase() + queryAsked.slice(1);
   console.log(updatedQueryAsked);
