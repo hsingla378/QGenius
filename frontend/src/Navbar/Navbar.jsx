@@ -25,10 +25,16 @@ import {
   SunIcon,
   MoonIcon,
 } from "@chakra-ui/icons";
+import { Link as ReactRouterLink } from "react-router-dom";
+import { Link as ChakraLink, LinkProps } from "@chakra-ui/react";
 
 import "./Navbar.css";
 
-const Links = ["DSA", "Play Quiz", "Generate Questions"];
+const Links = [
+  { name: "DSA", query: "dsa" },
+  { name: "Play Quiz", query: "quiz" },
+  { name: "Questions Generator", query: "questions-generator" },
+];
 
 const NavLink = (props) => {
   const { children } = props;
@@ -55,14 +61,22 @@ export default function WithAction() {
 
   return (
     <>
-      {/* <Progress size="xs" isIndeterminate position="sticky" top={0} /> */}
+      <Progress size="sm" isIndeterminate position="sticky" top={0} />
       <Box
         // bg={useColorModeValue("gray.100", "gray.900")}
         px={5}
         py={3}
       >
         <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
-          <Box className="logo">QGenius</Box>
+          <ChakraLink
+            as={ReactRouterLink}
+            to="/"
+            className="logo"
+            sx={{ textDecoration: "none" }}
+          >
+            <Box>QGenius</Box>
+          </ChakraLink>
+
           <Flex alignItems={"center"} spacing={3} sx={{ gap: "1em" }}>
             <Button onClick={toggleColorMode}>
               {colorMode === "light" ? <MoonIcon /> : <SunIcon />}
@@ -89,7 +103,9 @@ export default function WithAction() {
                   fontWeight={600}
                 >
                   {Links.map((link) => (
-                    <NavLink key={link}>{link}</NavLink>
+                    <ChakraLink as={ReactRouterLink} to={"/" + link.query}>
+                      <NavLink key={link.name}>{link.name}</NavLink>
+                    </ChakraLink>
                   ))}
                 </HStack>
               </HStack>

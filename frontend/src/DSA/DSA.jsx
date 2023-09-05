@@ -1,7 +1,14 @@
 import React from "react";
+import Navbar from "../Navbar/Navbar";
+import { ChakraProvider } from "@chakra-ui/react";
 
 function DSA() {
-  return <div>DSA</div>;
+  return (
+    <ChakraProvider>
+      <Navbar />
+      <div>DSA</div>;
+    </ChakraProvider>
+  );
 }
 
 export default DSA;

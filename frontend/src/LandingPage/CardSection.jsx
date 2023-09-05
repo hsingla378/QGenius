@@ -9,6 +9,7 @@ import {
   Icon,
   Stack,
   Text,
+  textDecoration,
   useColorModeValue,
 } from "@chakra-ui/react";
 import { ReactElement } from "react";
@@ -19,7 +20,8 @@ import {
   FcDonate,
   FcManager,
 } from "react-icons/fc";
-
+import { Link as ReactRouterLink } from "react-router-dom";
+import { Link as ChakraLink, LinkProps } from "@chakra-ui/react";
 // interface CardProps {
 //   heading: string
 //   description: string
@@ -27,7 +29,7 @@ import {
 //   href: string
 // }
 
-const Card = ({ heading, description, icon, href }: CardProps) => {
+const Card = ({ heading, description, icon, href }) => {
   return (
     <Box
       maxW={{ base: "full", md: "275px" }}
@@ -78,30 +80,37 @@ export default function gridListWith() {
 
       <Container maxW={"5xl"} my={12}>
         <Flex flexWrap="wrap" gridGap={6} justify="center">
-          <Card
-            heading={"DSA"}
-            icon={<Icon as={FcAssistant} w={10} h={10} />}
-            description={
-              "Lorem ipsum dolor sit amet catetur, adipisicing elit."
-            }
-            href={"#"}
-          />
-          <Card
-            heading={"Quiz"}
-            icon={<Icon as={FcCollaboration} w={10} h={10} />}
-            description={
-              "Lorem ipsum dolor sit amet catetur, adipisicing elit."
-            }
-            href={"#"}
-          />
-          <Card
-            heading={"Questions"}
-            icon={<Icon as={FcDonate} w={10} h={10} />}
-            description={
-              "Lorem ipsum dolor sit amet catetur, adipisicing elit."
-            }
-            href={"#"}
-          />
+          <ChakraLink as={ReactRouterLink} to="/dsa">
+            <Card
+              heading={"DSA"}
+              icon={<Icon as={FcAssistant} w={10} h={10} />}
+              description={
+                "Lorem ipsum dolor sit amet catetur, adipisicing elit."
+              }
+              href={"#"}
+            />
+          </ChakraLink>
+          <ChakraLink as={ReactRouterLink} to="/quiz">
+            <Card
+              heading={"Quiz"}
+              icon={<Icon as={FcCollaboration} w={10} h={10} />}
+              description={
+                "Lorem ipsum dolor sit amet catetur, adipisicing elit."
+              }
+              href={"#"}
+            />
+          </ChakraLink>
+
+          <ChakraLink as={ReactRouterLink} to="/questions-generator">
+            <Card
+              heading={"Questions"}
+              icon={<Icon as={FcDonate} w={10} h={10} />}
+              description={
+                "Lorem ipsum dolor sit amet catetur, adipisicing elit."
+              }
+              href={"#"}
+            />
+          </ChakraLink>
         </Flex>
       </Container>
     </Box>
