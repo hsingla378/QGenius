@@ -1,4 +1,4 @@
-[
+export const data = [
   {
     question:
       "Once upon a time, in a land far away, there was a magical stack called 'Mystack'. It could perform amazing operations such as push, pop, and get minimum element. One day, a wise programmer discovered the powers of Mystack and decided to test its abilities by creating a program that performs multiple operations on it. Can you help the programmer in creating this program?",

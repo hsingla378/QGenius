@@ -93,7 +93,7 @@ const SearchAnswer = ({
           <Heading as="h2" size="lg" mb={4}>
             {updatedQueryAsked}
           </Heading>
-          <Text as="p" fontSize="lg">
+          <Text as="p" fontSize="lg" width="100%">
             {answer}
           </Text>
         </VStack>

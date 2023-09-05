@@ -15,7 +15,15 @@ import {
 } from "@chakra-ui/react";
 import { quizData } from "../quizData";
 
-export const DropDown = ({ type, setSelectedOptions, selectedOptions }) => {
+export const DropDown = ({
+  type,
+  setSelectedOptions,
+  selectedOptions,
+  handleSearchData,
+}) => {
+  const handleSearch = (handleSearch) => {
+    handleSearchData(handleSearch);
+  };
   return (
     <ChakraProvider>
       <Box className="query-box">
@@ -90,6 +98,9 @@ export const DropDown = ({ type, setSelectedOptions, selectedOptions }) => {
             colorScheme={"green"}
             bg={"green.500"}
             _hover={{ bg: "green.500" }}
+            onClick={() => {
+              handleSearch(selectedOptions);
+            }}
             // margin="auto"
           >
             Generate

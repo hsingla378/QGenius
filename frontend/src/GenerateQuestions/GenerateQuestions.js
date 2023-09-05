@@ -41,7 +41,7 @@ export default function Question() {
           >
             Explore Random Questions{" "}
             <Text as={"span"} color={"green.400"}>
-              - Tailored to Your Learnin
+              - Tailored to Your Learning
             </Text>
           </Heading>
           <Text color={"gray.500"} maxW={"3xl"}>
