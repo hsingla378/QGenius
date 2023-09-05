@@ -19,6 +19,20 @@ import {
   Skeleton,
 } from "@chakra-ui/react";
 
+<<<<<<< HEAD
+
+// interface IBlogTags {
+//   tags: Array<string>
+//   marginTop?: SpaceProps['marginTop']
+// }
+
+// interface Props {
+//   marginTop?: number
+//   tags: any[]
+// }
+
+=======
+>>>>>>> bdbc025a7babaa2b3963d4703d6b65091497d5cb
 const BlogTags = (props) => {
   const { marginTop = 0, tags } = props;
 
@@ -35,6 +49,14 @@ const BlogTags = (props) => {
   );
 };
 
+<<<<<<< HEAD
+// interface BlogAuthorProps {
+//   date: Date
+//   name: string
+// }
+
+=======
+>>>>>>> bdbc025a7babaa2b3963d4703d6b65091497d5cb
 const BlogAuthor = (props) => {
   return (
     <HStack marginTop="2" spacing="2" display="flex" alignItems="center">
