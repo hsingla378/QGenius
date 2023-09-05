@@ -18,8 +18,14 @@ import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
 import { DropDown } from "../DropDown/DropDown";
 import "./Quiz.css";
+import { useState } from "react";
 
 export default function Quiz() {
+  const [selectedOptions, setSelectedOptions] = useState({
+    topic: "",
+    subtopic: "",
+    difficulty: "",
+  });
   return (
     <ChakraProvider>
       <Navbar />
@@ -48,7 +54,11 @@ export default function Quiz() {
           </Text>
         </Stack>
       </Container>
-      <DropDown type="quiz" />
+      <DropDown
+        type="quiz"
+        setSelectedOptions={setSelectedOptions}
+        selectedOptions={selectedOptions}
+      />
       <Footer />
     </ChakraProvider>
   );

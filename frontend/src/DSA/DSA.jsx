@@ -49,7 +49,11 @@ export default function DSA() {
           </Text>
         </Stack>
       </Container>
-      <DropDown type="dsa" setSelectedOptions={setSelectedOptions} />
+      <DropDown
+        type="dsa"
+        setSelectedOptions={setSelectedOptions}
+        selectedOptions={selectedOptions}
+      />
       {console.log("check data", selectedOptions)}
       <Footer />
     </ChakraProvider>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Flex,
   Container,
@@ -15,59 +15,86 @@ import {
 } from "@chakra-ui/react";
 import { quizData } from "../quizData";
 
-export const DropDown = ({ type, setSelectedOptions }) => {
+export const DropDown = ({ type, setSelectedOptions, selectedOptions }) => {
   return (
     <ChakraProvider>
       <Box className="query-box">
         {type !== "dsa" && (
           <Container mb={4} w="100%">
-            <Select placeholder="Select Topic">
+            <Select
+              placeholder="Select Topic"
+              onChange={(e) => {
+                setSelectedOptions((prev) => ({
+                  ...prev,
+                  topic: e.target.value,
+                }));
+              }}
+            >
               {quizData.map((data) => {
                 return <option value={data.topic}>{data.topic}</option>;
               })}
             </Select>
           </Container>
         )}
-        <Container my={type === "dsa" ? 4 : 6}>
-          <Select
-            placeholder="Select Subtopic"
-            onChange={(e) => {
-              setSelectedOptions((prev) => ({
-                ...prev,
-                subtopic: e.target.value,
-              }));
-            }}
+        {console.log("test", selectedOptions.topic || type === "dsa")}
+        {selectedOptions.topic || type === "dsa" ? (
+          <Container my={type === "dsa" ? 4 : 6}>
+            <Select
+              placeholder="Select Subtopic"
+              onChange={(e) => {
+                setSelectedOptions((prev) => ({
+                  ...prev,
+                  subtopic: e.target.value,
+                }));
+              }}
+            >
+              {type !== "dsa"
+                ? quizData
+                    .filter(
+                      (category) => category.topic === selectedOptions.topic
+                    )[0]
+                    .subtopics.map((subtopic) => {
+                      return <option value={subtopic}>{subtopic}</option>;
+                    })
+                : quizData
+                    .filter((category) => category.topic === "DSA")[0]
+                    .subtopics.map((subtopic) => {
+                      return <option value={subtopic}>{subtopic}</option>;
+                    })}
+            </Select>
+          </Container>
+        ) : (
+          ""
+        )}
+        {selectedOptions.subtopic && (
+          <Container my={6}>
+            <Select
+              placeholder="Select Difficulty"
+              onChange={(e) => {
+                setSelectedOptions((prev) => ({
+                  ...prev,
+                  difficulty: e.target.value,
+                }));
+              }}
+            >
+              <option value="easy">Easy</option>
+              <option value="medium">Medium</option>
+              <option value="hard">Hard</option>
+            </Select>
+          </Container>
+        )}
+        {selectedOptions.difficulty && (
+          <Button
+            rounded={"full"}
+            px={6}
+            colorScheme={"orange"}
+            bg={"orange.400"}
+            _hover={{ bg: "orange.500" }}
+            // margin="auto"
           >
-            {quizData[0].subtopics.map((subtopic) => {
-              return <option value={subtopic}>{subtopic}</option>;
-            })}
-          </Select>
-        </Container>
-        <Container my={6}>
-          <Select
-            placeholder="Select Difficulty"
-            onChange={(e) => {
-              setSelectedOptions((prev) => ({
-                ...prev,
-                difficulty: e.target.value,
-              }));
-            }}
-          >
-            <option value="easy">Easy</option>
-            <option value="medium">Medium</option>
-            <option value="hard">Hard</option>
-          </Select>
-        </Container>
-        <Button
-          rounded={"full"}
-          px={6}
-          colorScheme={"orange"}
-          bg={"orange.400"}
-          _hover={{ bg: "orange.500" }}
-          // margin="auto"
-        >
-          Generate
-        </Button>
+            Generate
+          </Button>
+        )}
       </Box>
     </ChakraProvider>
   );

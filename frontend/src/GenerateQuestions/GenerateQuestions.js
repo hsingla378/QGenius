@@ -14,8 +14,16 @@ import {
 import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
 import { DropDown } from "../DropDown/DropDown";
+import { useState } from "react";
+import GenerateAccordions from "./GenerateAccordions";
+import { interviewQuestions } from "./interviewQuestions";
 
 export default function Question() {
+  const [selectedOptions, setSelectedOptions] = useState({
+    topic: "",
+    subtopic: "",
+    difficulty: "",
+  });
   return (
     <ChakraProvider>
       <Navbar />
@@ -45,7 +53,12 @@ export default function Question() {
           </Text>
         </Stack>
       </Container>
-      <DropDown type="questions" />
+      <DropDown
+        type="questions"
+        setSelectedOptions={setSelectedOptions}
+        selectedOptions={selectedOptions}
+      />
+      <GenerateAccordions questionsList={interviewQuestions} />
       <Footer />
     </ChakraProvider>
   );
