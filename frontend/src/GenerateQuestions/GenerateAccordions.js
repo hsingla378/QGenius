@@ -24,27 +24,30 @@ export default function GenerateAccordions({ questionsList }) {
     >
       <Container>
         <Accordion allowMultiple width="100%" maxW="lg" bg="white" rounded="lg">
-          {questionsList.map((question) => {
-            return (
-              <AccordionItem>
-                <AccordionButton
-                  display="flex"
-                  alignItems="center"
-                  justifyContent="space-between"
-                  p={4}
-                  _hover={{ bg: "gray.100" }}
-                >
-                  <Text fontSize="md" color="gray.800" textAlign="left">
-                    {question.question}
-                  </Text>
-                  <ChevronDownIcon fontSize="24px" />
-                </AccordionButton>
-                <AccordionPanel pb={4}>
-                  <Text color="gray.600">{question.answer}</Text>
-                </AccordionPanel>
-              </AccordionItem>
-            );
-          })}
+          {console.log(questionsList, "inside accordian")}
+          {!questionsList
+            ? null
+            : questionsList.map((question) => {
+                return (
+                  <AccordionItem>
+                    <AccordionButton
+                      display="flex"
+                      alignItems="center"
+                      justifyContent="space-between"
+                      p={4}
+                      _hover={{ bg: "gray.100" }}
+                    >
+                      <Text fontSize="md" color="gray.800" textAlign="left">
+                        {question.question}
+                      </Text>
+                      <ChevronDownIcon fontSize="24px" />
+                    </AccordionButton>
+                    <AccordionPanel pb={4}>
+                      <Text color="gray.600">{question.answer}</Text>
+                    </AccordionPanel>
+                  </AccordionItem>
+                );
+              })}
         </Accordion>
       </Container>
     </Flex>

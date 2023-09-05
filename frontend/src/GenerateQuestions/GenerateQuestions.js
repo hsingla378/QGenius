@@ -24,6 +24,19 @@ export default function Question() {
     subtopic: "",
     difficulty: "",
   });
+  const [data, setData] = useState("");
+  const handleSearchData = (data) => {
+    async function fetchData(selectedOptions) {
+      let responce = await fetch(
+        `http://localhost:8082/interview-prep/?difficulty=${selectedOptions.difficulty}&topic=${selectedOptions.topic}&subtopic={${selectedOptions.subtopic}}`
+      );
+      responce = await responce.json();
+      setData(JSON.parse(responce.ans));
+      console.log(JSON.parse(responce.ans), "responce dsa");
+    }
+    console.log(data, "endpoints");
+    fetchData(data);
+  };
   return (
     <ChakraProvider>
       <Navbar />
@@ -57,8 +70,9 @@ export default function Question() {
         type="questions"
         setSelectedOptions={setSelectedOptions}
         selectedOptions={selectedOptions}
+        handleSearchData={handleSearchData}
       />
-      <GenerateAccordions questionsList={interviewQuestions} />
+      <GenerateAccordions questionsList={data} />
       <Footer />
     </ChakraProvider>
   );
