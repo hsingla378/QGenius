@@ -22,12 +22,6 @@ import {
 } from "react-icons/fc";
 import { Link as ReactRouterLink } from "react-router-dom";
 import { Link as ChakraLink, LinkProps } from "@chakra-ui/react";
-// interface CardProps {
-//   heading: string
-//   description: string
-//   icon: ReactElement
-//   href: string
-// }
 
 const Card = ({ heading, description, icon, href }) => {
   return (
@@ -53,13 +47,13 @@ const Card = ({ heading, description, icon, href }) => {
         >
           {icon}
         </Flex>
-        <Box mt={2}>
+        <Box mt={3}>
           <Heading fontSize="1.4rem">{heading}</Heading>
-          <Text mt={1} fontSize="1.1rem" color="gray.400">
+          <Text mt={2} fontSize="1.1rem" color="gray.400">
             {description}
           </Text>
         </Box>
-        <Button variant={"link"} colorScheme={"blue"} size={"md"}>
+        <Button mt={2} color="green.500" size="md">
           Learn more
         </Button>
       </Stack>

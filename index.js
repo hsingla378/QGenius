@@ -136,12 +136,13 @@ app.get("/generate-quiz", async (req, res) => {
     const searchData = req.query; // Use req.query to access query parameters
     console.log(searchData);
     const { difficulty, topic, subtopic } = searchData;
-    const searchQuery = `Imagine you are a prduct based company's interviewer Generate very unique 10 ${topic} questions which 
-    subtopic should be ${subtopic} with 
+    const searchQuery = `Imagine you are a prduct based company's interviewer Generate very unique 10 ${topic} 
+    questions which subtopic should be ${subtopic} with 
     logic difficulty level of ${difficulty} and give it in json format which is containing array of object and 
     each object should contain question as key and options as key which have array of 4 strings and only one
     option must be correct after that we sould have correct answer with answer as key and it must always have all
-    required key and must remember if you are giving code snippet than include code in question description.`;
+    required key and always give response in required format and don't give anything else and please return data in same format.
+    and must remember if you are giving code snippet than include code in question description.`;
 
     const response = await openai.chat.completions.create({
       model: "gpt-3.5-turbo-0613",
