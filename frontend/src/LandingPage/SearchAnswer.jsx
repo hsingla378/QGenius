@@ -1,5 +1,5 @@
 "use client";
-
+import React, { useState, useEffect } from "react";
 import {
   Box,
   Heading,
@@ -14,9 +14,12 @@ import {
   useColorModeValue,
   Container,
   VStack,
+  IconButton,
+  Stack,
+  Skeleton,
 } from "@chakra-ui/react";
-import Prism from 'prismjs';
 
+<<<<<<< HEAD
 
 // interface IBlogTags {
 //   tags: Array<string>
@@ -28,6 +31,8 @@ import Prism from 'prismjs';
 //   tags: any[]
 // }
 
+=======
+>>>>>>> bdbc025a7babaa2b3963d4703d6b65091497d5cb
 const BlogTags = (props) => {
   const { marginTop = 0, tags } = props;
 
@@ -44,11 +49,14 @@ const BlogTags = (props) => {
   );
 };
 
+<<<<<<< HEAD
 // interface BlogAuthorProps {
 //   date: Date
 //   name: string
 // }
 
+=======
+>>>>>>> bdbc025a7babaa2b3963d4703d6b65091497d5cb
 const BlogAuthor = (props) => {
   return (
     <HStack marginTop="2" spacing="2" display="flex" alignItems="center">
@@ -65,39 +73,28 @@ const BlogAuthor = (props) => {
   );
 };
 
-function convertTextToHTML(text) {
-  // Wrap the text in a <pre> element to preserve formatting
-  const formattedText = `<pre><code>${text}</code></pre>`;
-
-  // Use Prism.js to apply syntax highlighting
-  return Prism.highlightAll(formattedText, false);
-}
-
-const SearchAnswer = ({ answer }) => {
+const SearchAnswer = ({ answer, queryAsked, loading }) => {
+  let updatedQueryAsked =
+    queryAsked.charAt(0).toUpperCase() + queryAsked.slice(1);
+  console.log(updatedQueryAsked);
   return (
     <Container maxW={"7xl"} p="12" border="2px" my={10} rounded="lg">
-      <VStack paddingTop="40px" spacing="2" alignItems="flex-start">
-        <Heading as="h2">What we write about</Heading>
-        <Text as="p" fontSize="lg">
-          {answer}
-        </Text>
-        {/* <Text as="p" fontSize="lg">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
-          condimentum quam arcu, eu tempus tortor molestie at. Vestibulum
-          pretium condimentum dignissim. Vestibulum ultrices vitae nisi sed
-          imperdiet. Mauris quis erat consequat, commodo massa quis, feugiat
-          sapien. Suspendisse placerat vulputate posuere. Curabitur neque
-          tortor, mattis nec lacus non, placerat congue elit.
-        </Text>
-        <Text as="p" fontSize="lg">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
-          condimentum quam arcu, eu tempus tortor molestie at. Vestibulum
-          pretium condimentum dignissim. Vestibulum ultrices vitae nisi sed
-          imperdiet. Mauris quis erat consequat, commodo massa quis, feugiat
-          sapien. Suspendisse placerat vulputate posuere. Curabitur neque
-          tortor, mattis nec lacus non, placerat congue elit.
-        </Text> */}
-      </VStack>
+      {loading ? (
+        <Stack>
+          <Skeleton height="20px" />
+          <Skeleton height="20px" />
+          <Skeleton height="20px" />
+        </Stack>
+      ) : (
+        <VStack paddingTop="40px" spacing="2" alignItems="flex-start">
+          <Heading as="h2" size="lg" mb={4}>
+            {updatedQueryAsked}
+          </Heading>
+          <Text as="p" fontSize="lg">
+            {answer}
+          </Text>
+        </VStack>
+      )}
     </Container>
   );
 };

@@ -16,6 +16,7 @@ import {
   useColorModeValue,
   Stack,
   useColorMode,
+  Progress,
 } from "@chakra-ui/react";
 import {
   HamburgerIcon,
@@ -23,17 +24,20 @@ import {
   AddIcon,
   SunIcon,
   MoonIcon,
+  ChatIcon,
 } from "@chakra-ui/icons";
+import { Link as ReactRouterLink } from "react-router-dom";
+import { Link as ChakraLink, LinkProps } from "@chakra-ui/react";
 
 import "./Navbar.css";
 
-interface Props {
-  children: React.ReactNode;
-}
+const Links = [
+  { name: "DSA", query: "dsa" },
+  { name: "Play Quiz", query: "quiz" },
+  { name: "Questions Generator", query: "questions-generator" },
+];
 
-const Links = ["Dashboard", "Projects", "Team"];
-
-const NavLink = (props: Props) => {
+const NavLink = (props) => {
   const { children } = props;
   return (
     <Box
@@ -43,7 +47,7 @@ const NavLink = (props: Props) => {
       rounded={"md"}
       _hover={{
         textDecoration: "none",
-        bg: useColorModeValue("gray.200", "gray.700"),
+        // bg: useColorModeValue("gray.200", "gray.700"),
       }}
       href={"#"}
     >
@@ -52,15 +56,30 @@ const NavLink = (props: Props) => {
   );
 };
 
-export default function WithAction() {
+export default function WithAction({ loading }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { colorMode, toggleColorMode } = useColorMode();
 
   return (
     <>
-      <Box bg={useColorModeValue("gray.100", "gray.900")} px={4} py={3}>
+      {loading && (
+        <Progress size="sm" isIndeterminate position="sticky" top={0} />
+      )}
+      <Box
+        // bg={useColorModeValue("gray.100", "gray.900")}
+        px={5}
+        py={3}
+      >
         <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
-          <Box className="logo">QGenius</Box>
+          <ChakraLink
+            as={ReactRouterLink}
+            to="/"
+            className="logo-container no-text-decoration"
+          >
+            <ChatIcon className="logo-icon" w={8} h={8} color="red.500" />
+            <Box className="logo">QGenius</Box>
+          </ChakraLink>
+
           <Flex alignItems={"center"} spacing={3} sx={{ gap: "1em" }}>
             <Button onClick={toggleColorMode}>
               {colorMode === "light" ? <MoonIcon /> : <SunIcon />}
@@ -83,9 +102,13 @@ export default function WithAction() {
                   as={"nav"}
                   spacing={4}
                   display={{ base: "none", md: "flex" }}
+                  fontSize="1.1rem"
+                  fontWeight={600}
                 >
                   {Links.map((link) => (
-                    <NavLink key={link}>{link}</NavLink>
+                    <ChakraLink as={ReactRouterLink} to={"/" + link.query}>
+                      <NavLink key={link.name}>{link.name}</NavLink>
+                    </ChakraLink>
                   ))}
                 </HStack>
               </HStack>
