@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Button, Input, InputGroup, InputRightElement } from "@chakra-ui/react";
 
-export default function SearchBox({ SetAnswer }) {
+export default function SearchBox({ SetAnswer, setQueryAsked }) {
   const [searchQuery, setSearchQuery] = useState("");
   const [placeholderIndex, setPlaceholderIndex] = useState(0);
   const [placeholderText, setPlaceholderText] = useState("");
@@ -20,6 +20,7 @@ export default function SearchBox({ SetAnswer }) {
     const data = await response.json();
     console.log("response answer", data.ans);
     SetAnswer(data.ans);
+    setQueryAsked(text);
   };
 
   const handleSearchButton = () => {

@@ -1,15 +1,19 @@
 import "./App.css";
-import { ChakraProvider } from "@chakra-ui/react";
-import Navbar from "./Navbar/Navbar";
-import LandingPage from "./LandingPage/LandingPage";
-
-
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import MainPage from "./MainPage";
+import DSA from "./DSA/DSA";
+import Quiz from "./Quiz/Quiz";
+import Questions from "./Questions/Questions";
 function App() {
   return (
-    <ChakraProvider>
-      <Navbar />
-      <LandingPage />
-    </ChakraProvider>
+    <Router>
+      <Routes>
+        <Route path="/" exact element={<MainPage />} />
+        <Route path="/dsa" element={<DSA />} />
+        <Route path="/quiz" element={<Quiz />} />
+        <Route path="/questions-generator" element={<Questions />} />
+      </Routes>
+    </Router>
   );
 }
 
