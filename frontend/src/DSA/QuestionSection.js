@@ -18,28 +18,48 @@ function QuestionSection({ data }) {
           queryAsked={queryAsked}
           loading={loading}
       /> */}
+      {console.log(data[0])}
       <SearchAnswer
         answer={data}
+        heading="Question"
+        title="Add Two Numbers"
+        // image="image"
         //   queryAsked={queryAsked}
         //   loading={loading}
       />
       <SearchAnswer
         answer={data}
+        heading="Examples"
         //   queryAsked={queryAsked}
         //   loading={loading}
       />
       <SearchAnswer
         answer={data}
+        heading="Constraints"
         //   queryAsked={queryAsked}
         //   loading={loading}
       />
       <SearchAnswer
         answer={data}
+        heading="Sample Code"
         //   queryAsked={queryAsked}
         //   loading={loading}
       />
       <SearchAnswer
         answer={data}
+        heading="Solution"
+        //   queryAsked={queryAsked}
+        //   loading={loading}
+      />
+      <SearchAnswer
+        answer={data}
+        heading="FAQs"
+        //   queryAsked={queryAsked}
+        //   loading={loading}
+      />
+      <SearchAnswer
+        answer={data}
+        heading="Test Cases"
         //   queryAsked={queryAsked}
         //   loading={loading}
       />

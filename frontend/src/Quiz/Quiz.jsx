@@ -71,7 +71,7 @@ export default function Quiz() {
             lineHeight={"110%"}
           >
             Play Interactive Quizzes{" "}
-            <Text as={"span"} color={"orange.400"}>
+            <Text as={"span"} color={"green.500"}>
               - Test Your Knowledge
             </Text>
           </Heading>

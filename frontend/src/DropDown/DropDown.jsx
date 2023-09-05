@@ -95,9 +95,9 @@ export const DropDown = ({
           <Button
             rounded={"full"}
             px={6}
-            colorScheme={"orange"}
-            bg={"orange.400"}
-            _hover={{ bg: "orange.500" }}
+            colorScheme={"green"}
+            bg={"green.500"}
+            _hover={{ bg: "green.500" }}
             onClick={() => {
               handleSearch(selectedOptions);
             }}

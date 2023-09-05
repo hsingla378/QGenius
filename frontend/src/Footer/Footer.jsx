@@ -73,7 +73,7 @@ export default function Footer() {
             to="/"
             className="logo-container no-text-decoration"
           >
-            <ChatIcon className="logo-icon" w={8} h={8} color="red.500" />
+            <ChatIcon className="logo-icon" w={8} h={8} color="green.500" />
             <Box className="logo">QGenius</Box>
           </ChakraLink>
         </Flex>
