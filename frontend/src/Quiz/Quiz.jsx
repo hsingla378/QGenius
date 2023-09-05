@@ -54,6 +54,7 @@ export default function Quiz() {
       answer: "Adapter pattern",
     },
   ];
+  const [questions] = useState();
   return (
     <ChakraProvider>
       <Navbar />
