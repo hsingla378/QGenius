@@ -51,7 +51,7 @@ const BlogAuthor = (props) => {
   );
 };
 
-const SearchAnswer = ({ answer, queryAsked, loading }) => {
+const SearchAnswer = ({ answer = "", queryAsked = "", loading }) => {
   let updatedQueryAsked =
     queryAsked.charAt(0).toUpperCase() + queryAsked.slice(1);
   console.log(updatedQueryAsked);
