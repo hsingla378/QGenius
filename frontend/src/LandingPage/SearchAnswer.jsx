@@ -1,5 +1,5 @@
 "use client";
-
+import React, { useState, useEffect } from "react";
 import {
   Box,
   Heading,
@@ -14,6 +14,9 @@ import {
   useColorModeValue,
   Container,
   VStack,
+  IconButton,
+  Stack,
+  Skeleton,
 } from "@chakra-ui/react";
 
 const BlogTags = (props) => {
@@ -48,20 +51,28 @@ const BlogAuthor = (props) => {
   );
 };
 
-const SearchAnswer = ({ answer, queryAsked }) => {
+const SearchAnswer = ({ answer, queryAsked, loading }) => {
   let updatedQueryAsked =
     queryAsked.charAt(0).toUpperCase() + queryAsked.slice(1);
   console.log(updatedQueryAsked);
   return (
     <Container maxW={"7xl"} p="12" border="2px" my={10} rounded="lg">
-      <VStack paddingTop="40px" spacing="2" alignItems="flex-start">
-        <Heading as="h2" size="lg">
-          {updatedQueryAsked}
-        </Heading>
-        <Text as="p" fontSize="lg">
-          {answer}
-        </Text>
-      </VStack>
+      {loading ? (
+        <Stack>
+          <Skeleton height="20px" />
+          <Skeleton height="20px" />
+          <Skeleton height="20px" />
+        </Stack>
+      ) : (
+        <VStack paddingTop="40px" spacing="2" alignItems="flex-start">
+          <Heading as="h2" size="lg" mb={4}>
+            {updatedQueryAsked}
+          </Heading>
+          <Text as="p" fontSize="lg">
+            {answer}
+          </Text>
+        </VStack>
+      )}
     </Container>
   );
 };

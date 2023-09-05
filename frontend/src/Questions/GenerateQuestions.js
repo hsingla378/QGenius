@@ -10,16 +10,12 @@ import {
   Icon,
   IconProps,
   ChakraProvider,
-  Select,
-  Box,
-  Input,
 } from "@chakra-ui/react";
 import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
 import { DropDown } from "../DropDown/DropDown";
-import "./Quiz.css";
 
-export default function Quiz() {
+export default function Question() {
   return (
     <ChakraProvider>
       <Navbar />
@@ -35,20 +31,21 @@ export default function Quiz() {
             fontSize={{ base: "3xl", sm: "4xl", md: "6xl" }}
             lineHeight={"110%"}
           >
-            Play Interactive Quizzes{" "}
+            Explore Random Questions{" "}
             <Text as={"span"} color={"orange.400"}>
-              - Test Your Knowledge
+              - Tailored to Your Learnin
             </Text>
           </Heading>
           <Text color={"gray.500"} maxW={"3xl"}>
-            QGenius offers interactive quizzes on a variety of topics. Choose
-            your topic, select a subtopic, and set the difficulty level. Our
-            platform will generate random quiz questions tailored to your
-            preferences. Test your knowledge and enjoy the quiz experience.
+            QGenius allows you to generate random questions on various topics.
+            Choose your preferred topic, subtopic, and difficulty level. Our
+            platform will generate random questions based on your preferences.
+            Learn and prepare with these questions to enhance your knowledge and
+            interview readiness.
           </Text>
         </Stack>
       </Container>
-      <DropDown type="quiz" />
+      <DropDown type="questions" />
       <Footer />
     </ChakraProvider>
   );
