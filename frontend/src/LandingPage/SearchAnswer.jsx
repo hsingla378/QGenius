@@ -1,5 +1,5 @@
 "use client";
-
+import React, { useState, useEffect } from "react";
 import {
   Box,
   Heading,
@@ -14,9 +14,10 @@ import {
   useColorModeValue,
   Container,
   VStack,
+  IconButton,
 } from "@chakra-ui/react";
-import Prism from 'prismjs';
-
+import Prism from "prismjs";
+import { CheckIcon, CloseIcon } from "@chakra-ui/icons";
 
 // interface IBlogTags {
 //   tags: Array<string>
@@ -65,21 +66,14 @@ const BlogAuthor = (props: BlogAuthorProps) => {
   );
 };
 
-function convertTextToHTML(text) {
-  // Wrap the text in a <pre> element to preserve formatting
-  const formattedText = `<pre><code>${text}</code></pre>`;
-
-  // Use Prism.js to apply syntax highlighting
-  return Prism.highlightAll(formattedText, false);
-}
-
 const SearchAnswer = ({ answer }) => {
+  let test = answer;
   return (
     <Container maxW={"7xl"} p="12" border="2px" my={10} rounded="lg">
       <VStack paddingTop="40px" spacing="2" alignItems="flex-start">
         <Heading as="h2">What we write about</Heading>
         <Text as="p" fontSize="lg">
-          {answer}
+          {test}
         </Text>
         {/* <Text as="p" fontSize="lg">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
