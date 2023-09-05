@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { Button, Input, InputGroup, InputRightElement } from "@chakra-ui/react";
-import "./SearchBox.css";
 
 export default function SearchBox({ SetAnswer }) {
   const [searchQuery, setSearchQuery] = useState("");
   const [placeholderIndex, setPlaceholderIndex] = useState(0);
   const [placeholderText, setPlaceholderText] = useState("");
   const sentences = [
-    "Search your doubt",
-    "Ask me anything",
-    "Another sentence",
+    "What does OOP stand for?",
+    " What is SQL used for?",
+    "What's a boolean?",
+    "What's a loop that runs indefinitely?",
+    "What's a database primary key?",
   ];
 
   const fetchData = async (text) => {

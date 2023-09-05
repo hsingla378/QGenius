@@ -16,20 +16,8 @@ import {
   VStack,
   IconButton,
 } from "@chakra-ui/react";
-import Prism from "prismjs";
-import { CheckIcon, CloseIcon } from "@chakra-ui/icons";
 
-// interface IBlogTags {
-//   tags: Array<string>
-//   marginTop?: SpaceProps['marginTop']
-// }
-
-// interface Props {
-//   marginTop?: number
-//   tags: any[]
-// }
-
-const BlogTags = (props: Props) => {
+const BlogTags = (props) => {
   const { marginTop = 0, tags } = props;
 
   return (
@@ -45,12 +33,7 @@ const BlogTags = (props: Props) => {
   );
 };
 
-// interface BlogAuthorProps {
-//   date: Date
-//   name: string
-// }
-
-const BlogAuthor = (props: BlogAuthorProps) => {
+const BlogAuthor = (props) => {
   return (
     <HStack marginTop="2" spacing="2" display="flex" alignItems="center">
       <Image
@@ -66,31 +49,39 @@ const BlogAuthor = (props: BlogAuthorProps) => {
   );
 };
 
-const SearchAnswer = ({ answer }) => {
-  let test = answer;
+const SearchAnswer = ({ answer, queryAsked }) => {
+  function capitalizeAfterSpace(inputString) {
+    if (!inputString) {
+      return inputString; // Return the input string as is if it's empty or undefined
+    }
+
+    // Split the string into words using space as the delimiter
+    const words = inputString.split(" ");
+
+    // Capitalize the first letter of each word and join them back together
+    const capitalizedWords = words.map((word) => {
+      if (word.length === 0) {
+        return word; // Return empty word as is
+      }
+      // Capitalize the first letter and concatenate with the rest of the word
+      return word.charAt(0).toUpperCase() + word.slice(1);
+    });
+
+    // Join the capitalized words back with spaces to form the final string
+    const resultString = capitalizedWords.join(" ");
+
+    return resultString;
+  }
+  // let updatedQueryAsked = capitalizeAfterSpace(queryAsked);
   return (
     <Container maxW={"7xl"} p="12" border="2px" my={10} rounded="lg">
       <VStack paddingTop="40px" spacing="2" alignItems="flex-start">
-        <Heading as="h2">What we write about</Heading>
+        <Heading as="h2" size="lg">
+          {queryAsked}
+        </Heading>
         <Text as="p" fontSize="lg">
-          {test}
+          {answer}
         </Text>
-        {/* <Text as="p" fontSize="lg">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
-          condimentum quam arcu, eu tempus tortor molestie at. Vestibulum
-          pretium condimentum dignissim. Vestibulum ultrices vitae nisi sed
-          imperdiet. Mauris quis erat consequat, commodo massa quis, feugiat
-          sapien. Suspendisse placerat vulputate posuere. Curabitur neque
-          tortor, mattis nec lacus non, placerat congue elit.
-        </Text>
-        <Text as="p" fontSize="lg">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
-          condimentum quam arcu, eu tempus tortor molestie at. Vestibulum
-          pretium condimentum dignissim. Vestibulum ultrices vitae nisi sed
-          imperdiet. Mauris quis erat consequat, commodo massa quis, feugiat
-          sapien. Suspendisse placerat vulputate posuere. Curabitur neque
-          tortor, mattis nec lacus non, placerat congue elit.
-        </Text> */}
       </VStack>
     </Container>
   );

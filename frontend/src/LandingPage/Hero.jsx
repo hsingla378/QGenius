@@ -18,11 +18,17 @@ import {
 import SearchBox from "./SearchBox";
 import { useState } from "react";
 
-export default function CallToActionWithVideo({ SetAnswer }) {
+export default function CallToActionWithVideo({
+  SetAnswer,
+  setQueryAsked,
+  setToggleAnswerSection,
+  toggleAnswerSection,
+}) {
   const [toggleResonce, setToggleResonce] = useState(true);
   const handleToogleClick = () => {
     console.log("click to toggle");
     setToggleResonce(!toggleResonce);
+    setToggleAnswerSection(!toggleAnswerSection);
   };
   return (
     <Container maxW={"7xl"}>
@@ -64,7 +70,7 @@ export default function CallToActionWithVideo({ SetAnswer }) {
             code snippets, categorize them, and even sync them in the cloud so
             you can use them anywhere. All that is free!
           </Text>
-          <SearchBox SetAnswer={SetAnswer} />
+          <SearchBox SetAnswer={SetAnswer} setQueryAsked={setQueryAsked} />
           <Stack
             spacing={{ base: 4, sm: 6 }}
             direction={{ base: "column", sm: "row" }}
