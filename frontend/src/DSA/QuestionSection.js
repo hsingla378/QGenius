@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import SearchAnswer from "../LandingPage/SearchAnswer";
 
 function QuestionSection({ data }) {
@@ -18,7 +18,7 @@ function QuestionSection({ data }) {
           queryAsked={queryAsked}
           loading={loading}
       /> */}
-      {console.log(data[0])}
+      {console.log("dsaData", data)}
       <SearchAnswer
         answer={data}
         heading="Question"

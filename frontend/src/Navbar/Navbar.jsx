@@ -2,18 +2,10 @@
 import {
   Box,
   Flex,
-  Avatar,
   HStack,
-  Text,
   IconButton,
   Button,
-  Menu,
-  MenuButton,
-  MenuList,
-  MenuItem,
-  MenuDivider,
   useDisclosure,
-  useColorModeValue,
   Stack,
   useColorMode,
   Progress,
@@ -21,13 +13,12 @@ import {
 import {
   HamburgerIcon,
   CloseIcon,
-  AddIcon,
   SunIcon,
   MoonIcon,
   ChatIcon,
 } from "@chakra-ui/icons";
 import { Link as ReactRouterLink } from "react-router-dom";
-import { Link as ChakraLink, LinkProps } from "@chakra-ui/react";
+import { Link as ChakraLink } from "@chakra-ui/react";
 
 import "./Navbar.css";
 
@@ -63,7 +54,13 @@ export default function WithAction({ loading }) {
   return (
     <>
       {loading && (
-        <Progress size="sm" isIndeterminate position="sticky" top={0} />
+        <Progress
+          size="sm"
+          isIndeterminate
+          position="sticky"
+          top={0}
+          colorScheme="green"
+        />
       )}
       <Box
         // bg={useColorModeValue("gray.100", "gray.900")}
@@ -120,7 +117,9 @@ export default function WithAction({ loading }) {
           <Box pb={4} display={{ md: "none" }}>
             <Stack as={"nav"} spacing={4}>
               {Links.map((link) => (
-                <NavLink key={link}>{link}</NavLink>
+                <ChakraLink as={ReactRouterLink} to={"/" + link.query}>
+                  <NavLink key={link.name}>{link.name}</NavLink>
+                </ChakraLink>
               ))}
             </Stack>
           </Box>

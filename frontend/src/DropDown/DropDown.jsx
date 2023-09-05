@@ -1,17 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import {
-  Flex,
   Container,
-  Heading,
-  Stack,
-  Text,
   Button,
-  Icon,
-  IconProps,
   ChakraProvider,
   Select,
   Box,
-  Input,
 } from "@chakra-ui/react";
 import { quizData } from "../quizData";
 
@@ -101,7 +94,6 @@ export const DropDown = ({
             onClick={() => {
               handleSearch(selectedOptions);
             }}
-            // margin="auto"
           >
             Generate
           </Button>

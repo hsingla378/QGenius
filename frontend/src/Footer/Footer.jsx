@@ -3,17 +3,12 @@
 import { ChatIcon } from "@chakra-ui/icons";
 import {
   Box,
-  Container,
-  SimpleGrid,
-  Stack,
   Text,
   Flex,
-  Tag,
   useColorModeValue,
 } from "@chakra-ui/react";
-import { ReactNode } from "react";
 import { Link as ReactRouterLink } from "react-router-dom";
-import { Link as ChakraLink, LinkProps } from "@chakra-ui/react";
+import { Link as ChakraLink } from "@chakra-ui/react";
 
 // const Logo = (props: any) => {
 //   return (

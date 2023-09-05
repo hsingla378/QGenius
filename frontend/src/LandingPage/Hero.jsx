@@ -12,13 +12,12 @@ import {
   Icon,
   IconButton,
   createIcon,
-  IconProps,
   useColorModeValue,
 } from "@chakra-ui/react";
 import SearchBox from "./SearchBox";
 import { useState } from "react";
 
-export default function CallToActionWithVideo({
+export default function Hero({
   SetAnswer,
   setQueryAsked,
   setToggleAnswerSection,

@@ -1,63 +1,85 @@
 "use client";
 
+import React, { useEffect, useState } from "react";
 import {
-  Flex,
   Container,
   Heading,
   Stack,
   Text,
-  Button,
-  Icon,
-  IconProps,
   ChakraProvider,
-  Select,
-  Box,
-  Input,
   RadioGroup,
   Radio,
-  StackDivider,
+  useToast,
+  Skeleton,
 } from "@chakra-ui/react";
 import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
 import { DropDown } from "../DropDown/DropDown";
 import "./Quiz.css";
-import { useState } from "react";
 import QuestionCointainer from "./QuestionCointainer";
 
 export default function Quiz() {
+  const [quizData, setQuizData] = useState([]);
+  const [userAnswers, setUserAnswers] = useState([]); // Track user answers
   const [selectedOptions, setSelectedOptions] = useState({
     topic: "",
     subtopic: "",
     difficulty: "",
   });
-  const data = [
-    {
-      question:
-        "Design a low-level class structure for an Online Polling System.",
-      options: [
-        "Interpreter pattern",
-        "Iterator pattern",
-        "Bridge pattern",
-        "Observer pattern",
-      ],
-      answer: "Observer pattern",
-    },
-    {
-      question:
-        "Design a low-level class structure for a Flight Booking System.",
-      options: [
-        "Chain of Responsibility pattern",
-        "Prototype pattern",
-        "Visitor pattern",
-        "Adapter pattern",
-      ],
-      answer: "Adapter pattern",
-    },
-  ];
-  const [questions] = useState();
+  const [loading, setLoading] = useState(false);
+
+  const handleSearchData = async () => {
+    setLoading(true);
+    const response = await fetch(
+      `http://localhost:8082/generate-quiz?topic=${selectedOptions.topic}&subtopic=${selectedOptions.subtopic}&difficulty=${selectedOptions.difficulty}`
+    );
+    let responseData = await response.json();
+    // console.log("responseData", responseData.ans);
+    responseData = JSON.parse(responseData.ans);
+    console.log("responseDataijson", responseData.questions);
+    setQuizData(responseData.questions);
+    setLoading(false);
+  };
+
+  const toast = useToast();
+
+  // const quizData = [
+  //   {
+  //     question:
+  //       "Design a low-level class structure for an Online Polling System.",
+  //     options: [
+  //       "Interpreter pattern",
+  //       "Iterator pattern",
+  //       "Bridge pattern",
+  //       "Observer pattern",
+  //     ],
+  //     answer: "Observer pattern",
+  //   },
+  //   {
+  //     question:
+  //       "Design a low-level class structure for a Flight Booking System.",
+  //     options: [
+  //       "Chain of Responsibility pattern",
+  //       "Prototype pattern",
+  //       "Visitor pattern",
+  //       "Adapter pattern",
+  //     ],
+  //     answer: "Adapter pattern",
+  //   },
+  // ];
+
+  // Function to check if the selected answer is correct
+  const checkAnswer = (questionIndex, selectedOption) => {
+    const correctAnswer = quizData[questionIndex].answer;
+    const isCorrect = selectedOption === correctAnswer;
+    const updatedUserAnswers = [...userAnswers];
+    updatedUserAnswers[questionIndex] = isCorrect;
+    setUserAnswers(updatedUserAnswers);
+  };
+
   return (
     <ChakraProvider>
-      <Navbar />
+      <Navbar loading={loading} />
       <Container maxW={"5xl"}>
         <Stack
           textAlign={"center"}
@@ -87,23 +109,55 @@ export default function Quiz() {
         type="quiz"
         setSelectedOptions={setSelectedOptions}
         selectedOptions={selectedOptions}
+        handleSearchData={handleSearchData}
       />
-      {data.map((element) => {
-        return (
-          <QuestionCointainer>
-            <h1>{element.question}</h1>
-            <RadioGroup defaultValue="">
-              <Stack>
-                <Radio value="1">{element.options[0]}</Radio>
-                <Radio value="2">{element.options[1]}</Radio>
-                <Radio value="3">{element.options[2]}</Radio>
-                <Radio value="3">{element.options[3]}</Radio>
-              </Stack>
-            </RadioGroup>
-          </QuestionCointainer>
-        );
-      })}
-
+      {loading ? (
+        <Container mt={8}>
+          <Stack>
+            <Skeleton height="20px" />
+            <Skeleton height="20px" />
+            <Skeleton height="20px" />
+          </Stack>
+        </Container>
+      ) : (
+        quizData.map((element, index) => {
+          return (
+            <QuestionCointainer key={index}>
+              <h1>{element.question}</h1>
+              <RadioGroup defaultValue="">
+                <Stack>
+                  {element.options.map((option) => {
+                    return (
+                      <Radio
+                        key={option}
+                        value={option}
+                        onChange={() => checkAnswer(index, option)}
+                      >
+                        {option}
+                      </Radio>
+                    );
+                  })}
+                </Stack>
+              </RadioGroup>
+              {userAnswers[index] !== undefined && (
+                <Text display="none">
+                  {userAnswers[index]
+                    ? toast({
+                        title: `Great job! That's absolutely correct.`,
+                        status: "success",
+                        isClosable: true,
+                      })
+                    : toast({
+                        title: `Oops, it looks like there might be a mistake. Please try again.`,
+                        status: "error",
+                        isClosable: true,
+                      })}
+                </Text>
+              )}
+            </QuestionCointainer>
+          );
+        })
+      )}
       <Footer />
     </ChakraProvider>
   );

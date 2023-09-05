@@ -1,15 +1,12 @@
 "use client";
 
 import {
-  Flex,
   Container,
   Heading,
   Stack,
   Text,
-  Button,
-  Icon,
-  IconProps,
   ChakraProvider,
+  Skeleton,
 } from "@chakra-ui/react";
 import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
@@ -24,22 +21,29 @@ export default function Question() {
     subtopic: "",
     difficulty: "",
   });
-  const [data, setData] = useState("");
-  const handleSearchData = (data) => {
-    async function fetchData(selectedOptions) {
+  const [data, setData] = useState({ questions: [] });
+  const [loading, setLoading] = useState(false);
+  const handleSearchData = async (data) => {
+    try {
+      setLoading(true);
       let responce = await fetch(
-        `http://localhost:8082/interview-prep/?difficulty=${selectedOptions.difficulty}&topic=${selectedOptions.topic}&subtopic={${selectedOptions.subtopic}}`
+        `http://localhost:8082/interview-prep/?difficulty=${selectedOptions.difficulty}&topic=${selectedOptions.topic}&subtopic=${selectedOptions.subtopic}`
       );
-      responce = await responce.json();
-      setData(JSON.parse(responce.ans));
-      console.log(JSON.parse(responce.ans), "responce dsa");
+      let responseData = await responce.json();
+
+      const jsonArray = JSON.parse(responseData.ans);
+
+      console.log(jsonArray, "gggggg");
+      setData(jsonArray);
+    } catch (e) {
+      console.log(e, "error");
     }
-    console.log(data, "endpoints");
-    fetchData(data);
+    setLoading(false);
   };
+
   return (
     <ChakraProvider>
-      <Navbar />
+      <Navbar loading={loading}/>
       <Container maxW={"5xl"}>
         <Stack
           textAlign={"center"}
@@ -72,7 +76,17 @@ export default function Question() {
         selectedOptions={selectedOptions}
         handleSearchData={handleSearchData}
       />
-      <GenerateAccordions questionsList={data} />
+      {loading ? (
+        <Container mt={8}>
+          <Stack>
+            <Skeleton height="20px" />
+            <Skeleton height="20px" />
+            <Skeleton height="20px" />
+          </Stack>
+        </Container>
+      ) : (
+        <GenerateAccordions questionsList={data} loading={loading} />
+      )}
       <Footer />
     </ChakraProvider>
   );

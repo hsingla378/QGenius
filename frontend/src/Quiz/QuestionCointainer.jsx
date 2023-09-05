@@ -1,22 +1,5 @@
 import React from "react";
-import {
-  Box,
-  Heading,
-  Image,
-  Text,
-  Divider,
-  HStack,
-  Tag,
-  Wrap,
-  WrapItem,
-  SpaceProps,
-  useColorModeValue,
-  Container,
-  VStack,
-  IconButton,
-  Stack,
-  Skeleton,
-} from "@chakra-ui/react";
+import { Container, VStack, Stack, Skeleton } from "@chakra-ui/react";
 function QuestionCointainer({
   answer = "",
   queryAsked = "",

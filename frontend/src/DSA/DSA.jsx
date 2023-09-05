@@ -18,26 +18,25 @@ import { useState } from "react";
 import QuestionSection from "./QuestionSection";
 
 export default function DSA() {
+  const [loading, setLoading] = useState(false);
   const [selectedOptions, setSelectedOptions] = useState({
     subtopic: "",
     difficulty: "",
   });
   const [data, setData] = useState("");
-  const handleSearchData = (data) => {
-    async function fetchData(selectedOptions) {
-      let responce = await fetch(
-        `http://localhost:8082/generate-dsa-questions/?difficulty=${selectedOptions.difficulty}&topic=${selectedOptions.subtopic}&numofquestion=1`
-      );
-      responce = await responce.json();
-      setData(responce.ans);
-      console.log(responce, "responce dsa");
-    }
-    console.log(data, "endpoints");
-    fetchData(data);
+  const handleSearchData = async () => {
+    let response = await fetch(
+      `http://localhost:8082/generate-dsa-questions/?difficulty=${selectedOptions.difficulty}&topic=${selectedOptions.subtopic}&numofquestion=1`
+    );
+    let responseData = await response.json();
+    console.log("responseData", responseData);
+    responseData = JSON.parse(responseData.ans);
+    console.log("responseDataijson", responseData);
+    setData(responseData.questions);
   };
   return (
     <ChakraProvider>
-      <Navbar />
+      <Navbar loading={loading} />
       <Container maxW={"5xl"}>
         <Stack
           textAlign={"center"}
