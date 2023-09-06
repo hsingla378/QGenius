@@ -27,6 +27,9 @@ export default function Quiz() {
     difficulty: "",
   });
   const [loading, setLoading] = useState(false);
+  const [answeredQuestions, setAnsweredQuestions] = useState(
+    Array(quizData.length).fill(false)
+  );
 
   const handleSearchData = async () => {
     setLoading(true);
@@ -34,47 +37,36 @@ export default function Quiz() {
       `http://localhost:8082/generate-quiz?topic=${selectedOptions.topic}&subtopic=${selectedOptions.subtopic}&difficulty=${selectedOptions.difficulty}`
     );
     let responseData = await response.json();
-    // console.log("responseData", responseData.ans);
     responseData = JSON.parse(responseData.ans);
-    console.log("responseDataijson", responseData.questions);
     setQuizData(responseData.questions);
     setLoading(false);
   };
 
   const toast = useToast();
 
-  // const quizData = [
-  //   {
-  //     question:
-  //       "Design a low-level class structure for an Online Polling System.",
-  //     options: [
-  //       "Interpreter pattern",
-  //       "Iterator pattern",
-  //       "Bridge pattern",
-  //       "Observer pattern",
-  //     ],
-  //     answer: "Observer pattern",
-  //   },
-  //   {
-  //     question:
-  //       "Design a low-level class structure for a Flight Booking System.",
-  //     options: [
-  //       "Chain of Responsibility pattern",
-  //       "Prototype pattern",
-  //       "Visitor pattern",
-  //       "Adapter pattern",
-  //     ],
-  //     answer: "Adapter pattern",
-  //   },
-  // ];
-
-  // Function to check if the selected answer is correct
   const checkAnswer = (questionIndex, selectedOption) => {
     const correctAnswer = quizData[questionIndex].answer;
     const isCorrect = selectedOption === correctAnswer;
     const updatedUserAnswers = [...userAnswers];
     updatedUserAnswers[questionIndex] = isCorrect;
     setUserAnswers(updatedUserAnswers);
+
+    // Mark the question as answered
+    const updatedAnsweredQuestions = [...answeredQuestions];
+    updatedAnsweredQuestions[questionIndex] = true;
+    setAnsweredQuestions(updatedAnsweredQuestions);
+
+    // Display toast for the current question
+    const toastId = `toast-${questionIndex}`;
+    toast({
+      id: toastId,
+      title: isCorrect
+        ? `Great job! That's absolutely correct.`
+        : `Oops, it looks like there might be a mistake. Please try again.`,
+      status: isCorrect ? "success" : "error",
+      isClosable: true,
+      duration: 2000,
+    });
   };
 
   return (
@@ -110,6 +102,7 @@ export default function Quiz() {
         setSelectedOptions={setSelectedOptions}
         selectedOptions={selectedOptions}
         handleSearchData={handleSearchData}
+        loading={loading}
       />
       {loading ? (
         <Container mt={8}>
@@ -139,21 +132,6 @@ export default function Quiz() {
                   })}
                 </Stack>
               </RadioGroup>
-              {userAnswers[index] !== undefined && (
-                <Text display="none">
-                  {userAnswers[index]
-                    ? toast({
-                        title: `Great job! That's absolutely correct.`,
-                        status: "success",
-                        isClosable: true,
-                      })
-                    : toast({
-                        title: `Oops, it looks like there might be a mistake. Please try again.`,
-                        status: "error",
-                        isClosable: true,
-                      })}
-                </Text>
-              )}
             </QuestionCointainer>
           );
         })

@@ -67,6 +67,7 @@ export default function DSA() {
         setSelectedOptions={setSelectedOptions}
         selectedOptions={selectedOptions}
         handleSearchData={handleSearchData}
+        loading={loading}
       />
       <QuestionSection data={data} />
       <Footer />

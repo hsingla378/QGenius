@@ -26,6 +26,7 @@ const Links = [
   { name: "DSA", query: "dsa" },
   { name: "Play Quiz", query: "quiz" },
   { name: "Questions Generator", query: "questions-generator" },
+  { name: "Content", query: "Content" },
 ];
 
 const NavLink = (props) => {

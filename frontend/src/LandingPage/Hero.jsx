@@ -93,7 +93,7 @@ export default function Hero({
               _hover={{ bg: "green.500" }}
               onClick={handleToogleClick}
             >
-              {toggleResonce ? "Hide responce" : "Show responce"}
+              {toggleResonce ? "Hide response" : "Show response"}
             </Button>
             <Button
               rounded={"full"}
