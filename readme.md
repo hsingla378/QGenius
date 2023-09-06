@@ -20,6 +20,16 @@ Explore a vast collection of random questions on various topics. Choose your pre
 
 QGenius provides a personalized learning experience by allowing you to customize your question downloads. Select your preferred topic, subtopic, and desired difficulty level, and our platform will generate a tailored set of questions for you to download. These questions are designed to help you efficiently enhance your knowledge or boost your interview readiness.
 
+## How our website works ?
+
+<iframe
+  width="560"
+  height="315"
+  src="https://www.youtube.com/embed/6sA8MJHVv6k?si=xJ1_IrwLR8xUEeDo"
+  frameborder="0"
+  allowfullscreen
+></iframe>
+
 ## Technologies Used
 
 - Frontend: React
