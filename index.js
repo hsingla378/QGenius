@@ -5,8 +5,10 @@ const app = express();
 app.use(express.json());
 const cors = require("cors");
 const fs = require("fs");
+const PORT = process.env.PORT || 8082
 
 app.use(cors());
+
 app.options("*", cors());
 const openai = new OpenAI({
   apiKey: process.env.apiKey,
@@ -398,7 +400,7 @@ app.get("/", (req, res) => {
 });
 
 // Server starting
-const port = 8082;
-app.listen(port, () => {
-  console.log(`App is running on port ${port}`);
+
+app.listen(PORT, () => {
+  console.log(`App is running on port ${PORT}`);
 });
