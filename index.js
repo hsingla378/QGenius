@@ -5,8 +5,10 @@ const app = express();
 app.use(express.json());
 const cors = require("cors");
 const fs = require("fs");
+const PORT = process.env.PORT || 8082
 
 app.use(cors());
+
 app.options("*", cors());
 const openai = new OpenAI({
   apiKey: process.env.apiKey,
@@ -39,6 +41,7 @@ app.get("/askmeanything", async (req, res) => {
 });
 
 // Only generates Coding Question not LLD & HLD
+
 app.get("/generate-dsa-questions-download", async (req, res) => {
   try {
     const searchData = req.query; // Use req.query to access query parameters
@@ -305,7 +308,7 @@ app.get("/genrate-and-download-codes-developement", async (req, res) => {
 
 app.get("/genrate-and-download-codes-system-design", async (req, res) => {
   try {
-    const { topic, subtopic, difficulty } = req.query;
+    const { topic,subtopic, difficulty } = req.query;
     console.log(req.query);
     const searchQuery = `Imagine you are CTO of QGenius and have 30+ years of experience and now you want to hire senior software engineers, 
     your job is to must
@@ -398,7 +401,7 @@ app.get("/", (req, res) => {
 });
 
 // Server starting
-const port = 8082;
-app.listen(port, () => {
-  console.log(`App is running on port ${port}`);
+
+app.listen(PORT, () => {
+  console.log(`App is running on port ${PORT}`);
 });
