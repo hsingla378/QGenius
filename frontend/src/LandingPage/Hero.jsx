@@ -10,9 +10,18 @@ import {
   Button,
   Image,
   createIcon,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+  useDisclosure,
 } from "@chakra-ui/react";
 import SearchBox from "./SearchBox";
 import { useState } from "react";
+import "./Hero.css";
 
 export default function Hero({
   SetAnswer,
@@ -22,100 +31,142 @@ export default function Hero({
   setLoading,
 }) {
   const [toggleResonce, setToggleResonce] = useState(true);
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
   const handleToogleClick = () => {
     console.log("click to toggle");
     setToggleResonce(!toggleResonce);
     setToggleAnswerSection(!toggleAnswerSection);
   };
+
   return (
-    <Container maxW={"7xl"}>
-      <Stack
-        align={"center"}
-        spacing={{ base: 8, md: 10 }}
-        py={{ base: 20, md: 28 }}
-        direction={{ base: "column", md: "row" }}
-      >
-        <Stack flex={1} spacing={{ base: 5, md: 10 }}>
-          <Heading
-            lineHeight={1.1}
-            fontWeight={600}
-            fontSize={{ base: "3xl", sm: "4xl", lg: "6xl" }}
-          >
-            <Text as={"span"} color={"green.500"}>
-              Enhance your
-            </Text>
-            <br />
-            <Text
-              as={"span"}
-              position={"relative"}
-              _after={{
-                content: "''",
-                width: "full",
-                height: "30%",
-                position: "absolute",
-                bottom: 1,
-                left: 0,
-                bg: "green.500",
-                zIndex: -1,
-              }}
-            >
-              learning experience
-            </Text>
-            <br />
-            <Text as={"span"} color={"green.500"}>
-              with QGenius!
-            </Text>
-          </Heading>
-          <Text color={"gray.500"}>
-            QGenius is a comprehensive platform that offers generating DSA
-            questions generation, Quiz playing, and Interview question
-            generation to enhance your learning experience.
-          </Text>
-          <SearchBox
-            SetAnswer={SetAnswer}
-            setQueryAsked={setQueryAsked}
-            setLoading={setLoading}
-          />
-          <Stack
-            spacing={{ base: 4, sm: 6 }}
-            direction={{ base: "column", sm: "row" }}
-          >
-            <Button
-              rounded={"full"}
-              size={"lg"}
-              fontWeight={"normal"}
-              px={6}
-              colorScheme={"green"}
-              bg={"green.500"}
-              _hover={{ bg: "green.500" }}
-              onClick={handleToogleClick}
-            >
-              {toggleResonce ? "Hide response" : "Show response"}
-            </Button>
-            <Button
-              rounded={"full"}
-              size={"lg"}
-              fontWeight={"normal"}
-              px={6}
-              leftIcon={<PlayIcon h={4} w={4} color={"gray.300"} />}
-            >
-              How It Works
-            </Button>
-          </Stack>
-        </Stack>
-        <Flex
-          flex={1}
-          justify={"center"}
+    <>
+      <Container maxW={"7xl"}>
+        <Stack
           align={"center"}
-          position={"relative"}
-          w={"full"}
+          spacing={{ base: 8, md: 10 }}
+          py={{ base: 20, md: 28 }}
+          direction={{ base: "column", md: "row" }}
+          className="hero-container"
         >
-          <Box position={"relative"} w={"80%"}>
-            <Image alt={"Hero Image"} src="./hero_image.png" />
-          </Box>
-        </Flex>
-      </Stack>
-    </Container>
+          <Stack flex={1} spacing={{ base: 5, md: 10 }}>
+            <Heading
+              lineHeight={1.1}
+              fontWeight={600}
+              fontSize={{ base: "3xl", sm: "4xl", lg: "6xl" }}
+            >
+              <Text as={"span"} color={"green.500"}>
+                Enhance your
+              </Text>
+              <br />
+              <Text
+                as={"span"}
+                position={"relative"}
+                _after={{
+                  content: "''",
+                  width: "full",
+                  height: "30%",
+                  position: "absolute",
+                  bottom: 1,
+                  left: 0,
+                  bg: "green.500",
+                  zIndex: -1,
+                }}
+              >
+                learning experience
+              </Text>
+              <br />
+              <Text as={"span"} color={"green.500"}>
+                with QGenius!
+              </Text>
+            </Heading>
+            <Text color={"gray.500"}>
+              QGenius is a comprehensive platform that offers generating DSA
+              questions generation, Quiz playing, and Interview question
+              generation to enhance your learning experience.
+            </Text>
+            <SearchBox
+              SetAnswer={SetAnswer}
+              setQueryAsked={setQueryAsked}
+              setLoading={setLoading}
+            />
+            <Stack
+              spacing={{ base: 4, sm: 6 }}
+              direction={{ base: "column", sm: "row" }}
+            >
+              <Button
+                rounded={"full"}
+                size={"lg"}
+                fontWeight={"normal"}
+                px={6}
+                colorScheme={"green"}
+                bg={"green.500"}
+                _hover={{ bg: "green.500" }}
+                onClick={handleToogleClick}
+              >
+                {toggleResonce ? "Hide response" : "Show response"}
+              </Button>
+              <Button
+                rounded={"full"}
+                size={"lg"}
+                fontWeight={"normal"}
+                px={6}
+                leftIcon={
+                  <PlayIcon h={4} w={4} color={"gray.300"} onClick={onOpen} />
+                }
+                onClick={onOpen}
+              >
+                How It Works
+              </Button>
+            </Stack>
+          </Stack>
+          <Flex
+            flex={1}
+            justify={"center"}
+            align={"center"}
+            position={"relative"}
+            w={"full"}
+          >
+            <Box position={"relative"} w={"80%"}>
+              <Image alt={"Hero Image"} src="./hero_image.png" />
+            </Box>
+          </Flex>
+        </Stack>
+      </Container>
+
+      <Modal isOpen={isOpen} onClose={onClose}>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>How It Works</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody pb={6}>
+            <Modal isOpen={isOpen} onClose={onClose}>
+              <ModalOverlay />
+              <ModalContent>
+                <ModalHeader>Create your account</ModalHeader>
+                <ModalCloseButton />
+                <ModalBody pb={6}>
+                  <iframe
+                    width="100%"
+                    height="315"
+                    src="https://www.youtube.com/embed/6sA8MJHVv6k?si=xJ1_IrwLR8xUEeDo"
+                    title="YouTube Video"
+                    frameBorder="0"
+                    allowFullScreen
+                  ></iframe>
+                </ModalBody>
+                <ModalFooter>
+                  <Button onClick={onClose}>Cancel</Button>
+                </ModalFooter>
+              </ModalContent>
+            </Modal>
+          </ModalBody>
+          <ModalFooter>
+            <Button onClick={onClose}>Cancel</Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
+    </>
   );
 }
 
