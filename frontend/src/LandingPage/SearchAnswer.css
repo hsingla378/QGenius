@@ -1,0 +1,59 @@
+h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0.5em 0;
+}
+
+h4 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin: 0.5em 0;
+}
+
+h5 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0.5em 0;
+}
+
+li {
+  list-style: none;
+}
+
+pre {
+  background-color: rgba(0, 0, 0, 0.637);
+  padding: 0.5em 3em;
+}
+
+.question,
+.examples,
+.constraints,
+.sample-code,
+.faqs,
+.test-cases {
+  margin: 1em 0;
+}
+
+.question {
+  font-size: 1rem;
+}
+
+.examples div,
+.faq {
+  margin: 0.5em 0;
+}
+
+.faq-question,
+.faq-answer,
+.examples p,
+.constraints p {
+  margin: 0.3em 0;
+}
+
+.faq-question {
+  font-weight: 500;
+}
+
+.faq-answer {
+  font-weight: normal;
+}

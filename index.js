@@ -90,45 +90,85 @@ app.get("/askmeanything", async (req, res) => {
 
 
 // Only generates Coding Question not LLD & HLD
-app.get("/generate-dsa-questions", async (req, res) => {
-  try {
-    const searchData = req.query; // Use req.query to access query parameters
-    console.log(searchData);
-    const { difficulty, topic, numofquestions, lang } = searchData;
-    // const searchQuery1 = `Behave like 7 star code chef coder who is making questions for coding contest and important note that question 
-    // description should be unique & story format, Generate ${numofquestions} ${topic} questions, difficulty level of ${difficulty} 
-    // and give it in json format containing array of object & each object should contain question as key with actual question description, ans 
-    // as key with pseudo code of logic it should alway contain the logic that how to solve the issue and test case as key and some edge cases 
-    // with edgecases as key and also it should have solution key which should always have solution code in ${lang}. Remember it is very 
-    // important to give keys which are mentioned it should not be empty in any case.`;
+// app.get("/generate-dsa-questions", async (req, res) => {
+//   try {
+//     const searchData = req.query; // Use req.query to access query parameters
+//     console.log(searchData);
+//     const { difficulty, topic, numofquestions, lang } = searchData;
+//     // const searchQuery1 = `Behave like 7 star code chef coder who is making questions for coding contest and important note that question 
+//     // description should be unique & story format, Generate ${numofquestions} ${topic} questions, difficulty level of ${difficulty} 
+//     // and give it in json format containing array of object & each object should contain question as key with actual question description, ans 
+//     // as key with pseudo code of logic it should alway contain the logic that how to solve the issue and test case as key and some edge cases 
+//     // with edgecases as key and also it should have solution key which should always have solution code in ${lang}. Remember it is very 
+//     // important to give keys which are mentioned it should not be empty in any case.`;
 
-    const searchQuery = `Behave like a 7-star QGenius coder(Platform like CodeChef) who is creating questions for a coding contest. Generate ${numofquestions} ${topic} questions 
-    with a difficulty level of ${difficulty} result should contain array of object & object should have key as question 
-    which have question description without topic and it should be story format, and testcases and edgecases with these keys
-    and pusedocode with solution hint in string format and than solution key which will have actual coding solution in
-    ${lang}`
-    const response = await openai.chat.completions.create({
-      model: "gpt-3.5-turbo-0613",
+//     const searchQuery = `Behave like a 7-star QGenius coder(Platform like CodeChef) who is creating questions for a coding contest. Generate ${numofquestions} ${topic} questions 
+//     with a difficulty level of ${difficulty} result should contain array of object & object should have key as question 
+//     which have question description without topic and it should be story format, and testcases and edgecases with these keys
+//     and pusedocode with solution hint in string format and than solution key which will have actual coding solution in
+//     ${lang}`
+//     const response = await openai.chat.completions.create({
+//       model: "gpt-3.5-turbo-0613",
+//       messages: [
+//         {
+//           role: "user",
+//           content: searchQuery,
+//         },
+//       ],
+//       temperature: 1,
+//       max_tokens: 3947,
+//       top_p: 1,
+//       frequency_penalty: 0,
+//       presence_penalty: 0,
+//     });
+//     console.log(response.choices[0].message.content);
+//     const ans = response?.choices[0]?.message?.content;
+//     return res.status(200).json({ ans });
+//   } catch (e) {
+//     console.log(e);
+//   }
+// });
+
+app.get('/generate-dsa-questions',async(req, res) => {
+  try {
+    const {subtopic, topic, difficulty} = req.query;
+    console.log(req.query)
+    const searchQuery =  `generate a DSA question with these needs: topic ${subtopic} as h3 and have a class name ${topic} difficulty level 
+    that is  ${difficulty}  in the h4 tag and should have the class name "difficulty", then detailed question (coding bases, not theory bases) with a 
+    p tag and have the class "question" , remember that the question is in detail or accordingly and please don't provde topic within the 
+    question, sample input and outputs with their example as another div block having the title "Sample I/O" as h3 with the class "examples" 
+    and have p tags for inputs and outputs example with explanation all with p tags, remeber to bold "Input", "Output" and "Explaination",
+     constraints as other div blocks and have class "constraints", sample code block, that have the title "Sample Code" as h3 tags or the 
+     function and its parameters that it will check in the backend to verify with test cases with <code> tag within another <pre> tag  
+     means <code> within <pre>, correct solution in javascript with another div block have class"solution" then this block should have the 
+     title "Solution" as h3 tag and solution code in <code> tag means in this <code> tag you have to answer the code within another <pre> tag 
+     means <code> within <pre>, faqs another div block that have the class "faqs", have h3 title that is "FAQs" or "FAQ" accordingly with the 
+     class "faq-title" and for the question use the class "faq-question"  as p tag and for answer use "faq-answer".`
+    
+       console.log("khaliq")
+     const response = await openai.chat.completions.create({
+      model: "gpt-3.5-turbo-16k-0613",
       messages: [
         {
           role: "user",
-          content: searchQuery,
+          content: searchQuery
         },
       ],
-      temperature: 1,
-      max_tokens: 3947,
-      top_p: 1,
+      temperature: 0.5,
+      max_tokens: 16000,
+      top_p: 0.5,
       frequency_penalty: 0,
       presence_penalty: 0,
     });
+
     console.log(response.choices[0].message.content);
     const ans = response?.choices[0]?.message?.content;
     return res.status(200).json({ ans });
-  } catch (e) {
-    console.log(e);
+    
+  } catch (error) {
+    console.log(error);
   }
-});
-
+})
 
 // Generates quiz MCQ Questions
 app.get("/generate-quiz", async (req, res) => {

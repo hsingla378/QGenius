@@ -1,12 +1,7 @@
 "use client";
 
 import { ChatIcon } from "@chakra-ui/icons";
-import {
-  Box,
-  Text,
-  Flex,
-  useColorModeValue,
-} from "@chakra-ui/react";
+import { Box, Text, Flex, useColorModeValue } from "@chakra-ui/react";
 import { Link as ReactRouterLink } from "react-router-dom";
 import { Link as ChakraLink } from "@chakra-ui/react";
 

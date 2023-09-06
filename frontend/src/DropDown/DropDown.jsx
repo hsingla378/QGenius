@@ -13,6 +13,7 @@ export const DropDown = ({
   setSelectedOptions,
   selectedOptions,
   handleSearchData,
+  loading,
 }) => {
   const handleSearch = (handleSearch) => {
     handleSearchData(handleSearch);
@@ -94,6 +95,7 @@ export const DropDown = ({
             onClick={() => {
               handleSearch(selectedOptions);
             }}
+            isLoading={loading}
           >
             Generate
           </Button>
