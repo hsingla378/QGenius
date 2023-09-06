@@ -1,10 +1,8 @@
 import React, { useState } from "react";
-import ReactDOM from "react-dom/client";
 import Hero from "./Hero";
 import CardSection from "./CardSection";
 import Footer from "../Footer/Footer";
 import SearchAnswer from "./SearchAnswer";
-import { Progress } from "@chakra-ui/react";
 
 export default function LandingPage({ loading, setLoading }) {
   const [toggleAnswerSection, setToggleAnswerSection] = useState(true);

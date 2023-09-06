@@ -1,5 +1,6 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from "react";
-import { Button, Input, InputGroup, InputRightElement } from "@chakra-ui/react";
+import { Input, InputGroup, InputRightElement } from "@chakra-ui/react";
 import { Search2Icon } from "@chakra-ui/icons";
 
 export default function SearchBox({ SetAnswer, setQueryAsked, setLoading }) {
@@ -96,7 +97,7 @@ export default function SearchBox({ SetAnswer, setQueryAsked, setLoading }) {
           <Search2Icon
             w={8}
             h={8}
-            color="red.500"
+            color="green.500"
             onClick={handleSearchButton}
           />
         </InputRightElement>

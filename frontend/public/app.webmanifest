@@ -1,0 +1,28 @@
+{
+  "name": "QGenius",
+  "short_name": "QGenius",
+  "start_url": "./",
+  "description": "Enhance your learning experience!",
+  "orientation": "any",
+  "theme_color": "#38A169",
+  "scope": "./",
+  "display": "standalone",
+  "icons": [
+    {
+      "src": "QGenius_512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "QGenius_1024.png",
+      "sizes": "1024x1024",
+      "type": "image/png"
+    },
+    {
+      "src": "QGenius_maskable.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purposes": "maskable"
+    }
+  ]
+}

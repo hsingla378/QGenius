@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable no-unused-vars */
 import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
@@ -9,16 +11,18 @@ function CodeEditor() {
     try {
       const data =
         "topic: greedy, difficult level: easy,generate a unique DSA question in detail format on the given topic, include contstraints, sample code in javascript or a function that users can use and also this function will checked in the test cases if the solution is right or wrong but it should not include the solution, solution in javascript with explaination differently, 2-3 sample input-output examples with explanation after it, and faqs. Remember it should be in JSON format, also please don't include the topic name within the question description.";
-      const response = await axios.get("http://localhost:8082/random?data="+data);
-      console.log(response.data)
-      setQuestion(response.data)
+      const response = await axios.get(
+        "http://localhost:8082/random?data=" + data
+      );
+      console.log(response.data);
+      setQuestion(response.data);
     } catch (error) {
       console.log(error);
     }
   };
   useEffect(() => {
     performApiCallForQuestion();
-  },["asdadasdasdasdas"])
+  }, ["asdadasdasdasdas"]);
   return (
     <>
       <div>

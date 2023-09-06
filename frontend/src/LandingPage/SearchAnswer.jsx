@@ -1,101 +1,39 @@
 "use client";
-import React, { useState, useEffect } from "react";
-import {
-  Box,
-  Heading,
-  Image,
-  Text,
-  Divider,
-  HStack,
-  Tag,
-  Wrap,
-  WrapItem,
-  SpaceProps,
-  useColorModeValue,
-  Container,
-  VStack,
-  IconButton,
-  Stack,
-  Skeleton,
-} from "@chakra-ui/react";
+import React, { useEffect } from "react";
+import { Heading, Container, VStack, Stack, Skeleton } from "@chakra-ui/react";
+import "./SearchAnswer.css";
 
-<<<<<<< HEAD
+const SearchAnswer = ({ answer = "", queryAsked = "", loading, heading }) => {
+  useEffect(() => {
+    // Check if the element exists before setting innerHTML
+    const searchAnswerElement = document.getElementById("searchAnswer");
+    if (searchAnswerElement) {
+      searchAnswerElement.innerHTML = answer;
+    }
+  }, [answer]);
 
-// interface IBlogTags {
-//   tags: Array<string>
-//   marginTop?: SpaceProps['marginTop']
-// }
-
-// interface Props {
-//   marginTop?: number
-//   tags: any[]
-// }
-
-=======
->>>>>>> bdbc025a7babaa2b3963d4703d6b65091497d5cb
-const BlogTags = (props) => {
-  const { marginTop = 0, tags } = props;
-
-  return (
-    <HStack spacing={2} marginTop={marginTop}>
-      {tags.map((tag) => {
-        return (
-          <Tag size={"md"} variant="solid" colorScheme="orange" key={tag}>
-            {tag}
-          </Tag>
-        );
-      })}
-    </HStack>
-  );
-};
-
-<<<<<<< HEAD
-// interface BlogAuthorProps {
-//   date: Date
-//   name: string
-// }
-
-=======
->>>>>>> bdbc025a7babaa2b3963d4703d6b65091497d5cb
-const BlogAuthor = (props) => {
-  return (
-    <HStack marginTop="2" spacing="2" display="flex" alignItems="center">
-      <Image
-        borderRadius="full"
-        boxSize="40px"
-        src="https://100k-faces.glitch.me/random-image"
-        alt={`Avatar of ${props.name}`}
-      />
-      <Text fontWeight="medium">{props.name}</Text>
-      <Text>—</Text>
-      <Text>{props.date.toLocaleDateString()}</Text>
-    </HStack>
-  );
-};
-
-const SearchAnswer = ({ answer, queryAsked, loading }) => {
   let updatedQueryAsked =
     queryAsked.charAt(0).toUpperCase() + queryAsked.slice(1);
   console.log(updatedQueryAsked);
   return (
-    <Container maxW={"7xl"} p="12" border="2px" my={10} rounded="lg">
-      {loading ? (
-        <Stack>
-          <Skeleton height="20px" />
-          <Skeleton height="20px" />
-          <Skeleton height="20px" />
-        </Stack>
-      ) : (
-        <VStack paddingTop="40px" spacing="2" alignItems="flex-start">
-          <Heading as="h2" size="lg" mb={4}>
-            {updatedQueryAsked}
-          </Heading>
-          <Text as="p" fontSize="lg">
-            {answer}
-          </Text>
-        </VStack>
-      )}
-    </Container>
+    <>
+      <Container maxW={"5xl"} py="4" px="10" border="2px" my={10} rounded="lg">
+        {loading ? (
+          <Stack>
+            <Skeleton height="20px" />
+            <Skeleton height="20px" />
+            <Skeleton height="20px" />
+          </Stack>
+        ) : (
+          <VStack spacing="2" alignItems="flex-start">
+            <Heading as="h2" size="lg" mb={4}>
+              {updatedQueryAsked}
+            </Heading>
+            <div id="searchAnswer"></div>
+          </VStack>
+        )}
+      </Container>
+    </>
   );
 };
 

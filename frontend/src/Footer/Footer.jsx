@@ -1,19 +1,9 @@
 "use client";
 
 import { ChatIcon } from "@chakra-ui/icons";
-import {
-  Box,
-  Container,
-  SimpleGrid,
-  Stack,
-  Text,
-  Flex,
-  Tag,
-  useColorModeValue,
-} from "@chakra-ui/react";
-import { ReactNode } from "react";
+import { Box, Text, Flex, useColorModeValue } from "@chakra-ui/react";
 import { Link as ReactRouterLink } from "react-router-dom";
-import { Link as ChakraLink, LinkProps } from "@chakra-ui/react";
+import { Link as ChakraLink } from "@chakra-ui/react";
 
 // const Logo = (props: any) => {
 //   return (
@@ -73,7 +63,7 @@ export default function Footer() {
             to="/"
             className="logo-container no-text-decoration"
           >
-            <ChatIcon className="logo-icon" w={8} h={8} color="red.500" />
+            <ChatIcon className="logo-icon" w={8} h={8} color="green.500" />
             <Box className="logo">QGenius</Box>
           </ChakraLink>
         </Flex>
