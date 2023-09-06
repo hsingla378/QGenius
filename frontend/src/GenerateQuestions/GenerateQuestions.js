@@ -13,7 +13,6 @@ import Footer from "../Footer/Footer";
 import { DropDown } from "../DropDown/DropDown";
 import { useState } from "react";
 import GenerateAccordions from "./GenerateAccordions";
-import { interviewQuestions } from "./interviewQuestions";
 
 export default function Question() {
   const [selectedOptions, setSelectedOptions] = useState({
@@ -43,7 +42,7 @@ export default function Question() {
 
   return (
     <ChakraProvider>
-      <Navbar loading={loading}/>
+      <Navbar loading={loading} />
       <Container maxW={"5xl"}>
         <Stack
           textAlign={"center"}
@@ -56,17 +55,19 @@ export default function Question() {
             fontSize={{ base: "3xl", sm: "4xl", md: "6xl" }}
             lineHeight={"110%"}
           >
-            Explore Random Questions{" "}
+            {window.location.pathname !== "/Content"
+              ? " Explore Random Questions"
+              : "Personalized Question Download"}{" "}
             <Text as={"span"} color={"green.400"}>
-              - Tailored to Your Learning
+              {window.location.pathname !== "/Content"
+                ? " - Tailored to Your Learning"
+                : " - Perfect Targeted Learning"}
             </Text>
           </Heading>
           <Text color={"gray.500"} maxW={"3xl"}>
-            QGenius allows you to generate random questions on various topics.
-            Choose your preferred topic, subtopic, and difficulty level. Our
-            platform will generate random questions based on your preferences.
-            Learn and prepare with these questions to enhance your knowledge and
-            interview readiness.
+            {window.location.pathname !== "/Content"
+              ? "QGenius allows you to generate random questions on various topics.Choose your preferred topic, subtopic, and difficulty level. Ourplatform will generate random questions based on your preferences.Learn and prepare with these questions to enhance your knowledge andinterview readiness."
+              : "QGenius provides you with the opportunity to customize your question downloads according to your preferred topic, subtopic, and desired difficulty level. Once you've selected your specific preferences, our platform will generate a tailored set of questions for you to download. These questions are designed to help you learn and prepare efficiently, whether it's for enhancing your knowledge or boosting your interview readiness."}
           </Text>
         </Stack>
       </Container>
@@ -75,17 +76,23 @@ export default function Question() {
         setSelectedOptions={setSelectedOptions}
         selectedOptions={selectedOptions}
         handleSearchData={handleSearchData}
+        loading={loading}
+        setLoading={setLoading}
       />
-      {loading ? (
-        <Container mt={8}>
-          <Stack>
-            <Skeleton height="20px" />
-            <Skeleton height="20px" />
-            <Skeleton height="20px" />
-          </Stack>
-        </Container>
+      {window.location.pathname !== "/Content" ? (
+        loading ? (
+          <Container mt={8}>
+            <Stack>
+              <Skeleton height="20px" />
+              <Skeleton height="20px" />
+              <Skeleton height="20px" />
+            </Stack>
+          </Container>
+        ) : (
+          <GenerateAccordions questionsList={data} loading={loading} />
+        )
       ) : (
-        <GenerateAccordions questionsList={data} loading={loading} />
+        ""
       )}
       <Footer />
     </ChakraProvider>

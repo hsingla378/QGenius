@@ -9,10 +9,7 @@ import {
   Text,
   Button,
   Image,
-  Icon,
-  IconButton,
   createIcon,
-  useColorModeValue,
 } from "@chakra-ui/react";
 import SearchBox from "./SearchBox";
 import { useState } from "react";
@@ -93,7 +90,7 @@ export default function Hero({
               _hover={{ bg: "green.500" }}
               onClick={handleToogleClick}
             >
-              {toggleResonce ? "Hide responce" : "Show responce"}
+              {toggleResonce ? "Hide response" : "Show response"}
             </Button>
             <Button
               rounded={"full"}

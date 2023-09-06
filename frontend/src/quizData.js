@@ -32,4 +32,26 @@ export const quizData = [
     topic: "Backend",
     subtopics: ["Node.js", "Express.js"],
   },
+  {
+    topic: "Low Level Design",
+    subtopics: [
+      "Module Design",
+      "Data Structures",
+      "Algorithm Design",
+      "Interface Design",
+      "Concurrency and Multithreading",
+      "Error Handling",
+    ],
+  },
+  {
+    topic: "High Level Design",
+    subtopics: [
+      "System Architecture",
+      "Software Modules and Components",
+      "Data Flow and Data Models",
+      "Database Design",
+      "User Interface Design",
+      "External System Integration",
+    ],
+  },
 ];

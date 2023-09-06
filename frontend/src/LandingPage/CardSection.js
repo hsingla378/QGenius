@@ -9,26 +9,18 @@ import {
   Icon,
   Stack,
   Text,
-  textDecoration,
   useColorModeValue,
 } from "@chakra-ui/react";
-import { ReactElement } from "react";
-import {
-  FcAbout,
-  FcAssistant,
-  FcCollaboration,
-  FcDonate,
-  FcManager,
-} from "react-icons/fc";
+import { FcAssistant, FcCollaboration, FcDonate } from "react-icons/fc";
 import { Link as ReactRouterLink } from "react-router-dom";
-import { Link as ChakraLink, LinkProps } from "@chakra-ui/react";
+import { Link as ChakraLink } from "@chakra-ui/react";
 
 const Card = ({ heading, description, icon, href }) => {
   return (
     <Box
       maxW={{ base: "full", md: "300px" }}
       w={"full"}
-      borderWidth="1px"
+      borderWidth="2px"
       borderRadius="lg"
       overflow="hidden"
       p={5}

@@ -1,15 +1,6 @@
 "use client";
 import React, { useEffect } from "react";
-import {
-  Heading,
-  Text,
-  Container,
-  VStack,
-  Stack,
-  Skeleton,
-  Box,
-  Code,
-} from "@chakra-ui/react";
+import { Heading, Container, VStack, Stack, Skeleton } from "@chakra-ui/react";
 import "./SearchAnswer.css";
 
 const SearchAnswer = ({ answer = "", queryAsked = "", loading, heading }) => {

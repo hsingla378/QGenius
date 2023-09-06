@@ -12,6 +12,7 @@ function App() {
         <Route path="/dsa" element={<DSA />} />
         <Route path="/quiz" element={<Quiz />} />
         <Route path="/questions-generator" element={<Questions />} />
+        <Route path="/content" element={<Questions />} />
       </Routes>
     </Router>
   );

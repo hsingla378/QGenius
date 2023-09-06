@@ -14,9 +14,65 @@ export const DropDown = ({
   selectedOptions,
   handleSearchData,
   loading,
+  setLoading,
 }) => {
   const handleSearch = (handleSearch) => {
     handleSearchData(handleSearch);
+  };
+  async function downloadData(url) {
+    setLoading(true);
+    await fetch(url)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.blob();
+      })
+      .then((blob) => {
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = "file.txt"; // Set the desired file name
+        document.body.appendChild(a);
+        a.click();
+        window.URL.revokeObjectURL(url);
+      })
+      .catch((error) => {
+        console.error("Fetch error:", error);
+      });
+    setLoading(false);
+  }
+  const downloader = async (data) => {
+    switch (data.topic) {
+      case "DSA":
+        downloadData(
+          `http://localhost:8082/genrate-and-download-codes-dsa?topic=${data.topic}&subtopic${data.subtopic}&difficulty=${data.difficulty}`
+        );
+        break;
+      case "High Level Design":
+        downloadData(
+          `http://localhost:8082/genrate-and-download-codes-system-design?topic=${data.topic}&subtopic${data.subtopic}&difficulty=${data.difficulty}`
+        );
+        break;
+      case "Low Level Design":
+        downloadData(
+          `http://localhost:8082/genrate-and-download-codes-system-design?topic=${data.topic}&subtopic${data.subtopic}&difficulty=${data.difficulty}`
+        );
+        break;
+      case "Backend":
+        downloadData(
+          `http://localhost:8082/genrate-and-download-codes-developement?topic=${data.topic}&subtopic${data.subtopic}&difficulty=${data.difficulty}`
+        );
+        break;
+      case "Frontend":
+        downloadData(
+          `http://localhost:8082/genrate-and-download-codes-developement?topic=${data.topic}&subtopic${data.subtopic}&difficulty=${data.difficulty}`
+        );
+        break;
+      default:
+        // Handle the case when data.topic is not one of the specified topics
+        break;
+    }
   };
   return (
     <ChakraProvider>
@@ -38,7 +94,6 @@ export const DropDown = ({
             </Select>
           </Container>
         )}
-        {console.log("test", selectedOptions.topic || type === "dsa")}
         {selectedOptions.topic || type === "dsa" ? (
           <Container my={type === "dsa" ? 4 : 6}>
             <Select
@@ -93,7 +148,11 @@ export const DropDown = ({
             bg={"green.500"}
             _hover={{ bg: "green.500" }}
             onClick={() => {
-              handleSearch(selectedOptions);
+              if (window.location.pathname !== "/Content") {
+                handleSearch(selectedOptions);
+              } else {
+                downloader(selectedOptions);
+              }
             }}
             isLoading={loading}
           >
