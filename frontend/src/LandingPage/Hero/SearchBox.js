@@ -30,6 +30,7 @@ export default function SearchBox({ SetAnswer, setQueryAsked, setLoading }) {
 
   const handleSearchButton = (e) => {
     e.preventDefault(); // prevent
+    if (!searchQuery) return;
     fetchData(searchQuery);
     console.log(searchQuery);
   };
