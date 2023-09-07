@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { Input, InputGroup, InputRightElement } from "@chakra-ui/react";
 import { Search2Icon } from "@chakra-ui/icons";
-import { API_URL } from "../constants";
+import { API_URL } from "../../constants";
 
 export default function SearchBox({ SetAnswer, setQueryAsked, setLoading }) {
   const [searchQuery, setSearchQuery] = useState("");
@@ -31,6 +31,7 @@ export default function SearchBox({ SetAnswer, setQueryAsked, setLoading }) {
 
   const handleSearchButton = (e) => {
     e.preventDefault(); // prevent
+    if (!searchQuery) return;
     fetchData(searchQuery);
     console.log(searchQuery);
   };

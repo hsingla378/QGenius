@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import Hero from "./Hero";
-import CardSection from "./CardSection";
+import Hero from "./Hero/Hero";
+import CardSection from "./CardSection/CardSection";
 import Footer from "../Footer/Footer";
-import SearchAnswer from "./SearchAnswer";
+import SearchAnswer from "./SearchAnswer/SearchAnswer";
 
 export default function LandingPage({ loading, setLoading }) {
   const [toggleAnswerSection, setToggleAnswerSection] = useState(true);

@@ -12,7 +12,7 @@ import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
 import { DropDown } from "../DropDown/DropDown";
 import { useState } from "react";
-import SearchAnswer from "../LandingPage/SearchAnswer";
+import SearchAnswer from "../LandingPage/SearchAnswer/SearchAnswer";
 import { API_URL } from "../constants";
 
 export default function DSA() {

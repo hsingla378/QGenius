@@ -1,0 +1,6 @@
+@media (max-width: 768px) {
+  .hero-container {
+    flex-direction: column-reverse !important;
+    padding-top: 2rem !important;
+  }
+}
