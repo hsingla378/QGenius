@@ -17,6 +17,7 @@ import Footer from "../Footer/Footer";
 import { DropDown } from "../DropDown/DropDown";
 import "./Quiz.css";
 import QuestionCointainer from "./QuestionCointainer";
+import { API_URL } from "../constants";
 
 export default function Quiz() {
   const [quizData, setQuizData] = useState([]);
@@ -34,7 +35,7 @@ export default function Quiz() {
   const handleSearchData = async () => {
     setLoading(true);
     const response = await fetch(
-      `http://localhost:8082/generate-quiz?topic=${selectedOptions.topic}&subtopic=${selectedOptions.subtopic}&difficulty=${selectedOptions.difficulty}`
+      `${API_URL}/generate-quiz?topic=${selectedOptions.topic}&subtopic=${selectedOptions.subtopic}&difficulty=${selectedOptions.difficulty}`
     );
     let responseData = await response.json();
     responseData = JSON.parse(responseData.ans);
