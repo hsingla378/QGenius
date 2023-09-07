@@ -19,7 +19,7 @@ const askmeanything = async (req, res) => {
       frequency_penalty: 0,
       presence_penalty: 0,
     });
-    // console.log(response.choices[0].message.content)
+    
     const ans = response?.choices[0]?.message?.content;
     return res.status(200).json({ ans });
   } catch (e) {
@@ -30,7 +30,6 @@ const askmeanything = async (req, res) => {
 const generateAndDownloadDSAQuestions = async (req, res) => {
   try {
     const searchData = req.query; // Use req.query to access query parameters
-    console.log(searchData);
     const { difficulty, topic, numofquestions, lang } = searchData;
     const searchQuery = `Behave like a 7-star QGenius coder(Platform like CodeChef) who is creating questions for a coding contest. Generate ${numofquestions} ${topic} questions 
       with a difficulty level of ${difficulty} result should contain array of object & object should have key as question 
@@ -51,7 +50,6 @@ const generateAndDownloadDSAQuestions = async (req, res) => {
       frequency_penalty: 0,
       presence_penalty: 0,
     });
-    console.log(response.choices[0].message.content);
     const ans = response?.choices[0]?.message?.content;
 
     // Write the response to a .txt file
@@ -79,7 +77,7 @@ const generateAndDownloadDSAQuestions = async (req, res) => {
 const generateQuiz = async (req, res) => {
   try {
     const searchData = req.query; // Use req.query to access query parameters
-    console.log(searchData);
+    
     const { difficulty, topic, subtopic } = searchData;
     const searchQuery = `Imagine you are a prduct based company's interviewer Generate very unique 10 ${topic} 
       questions which subtopic should be ${subtopic} with 
@@ -103,7 +101,6 @@ const generateQuiz = async (req, res) => {
       frequency_penalty: 0,
       presence_penalty: 0,
     });
-    console.log(response.choices[0].message.content);
     const ans = response?.choices[0]?.message?.content;
     return res.status(200).json({ ans });
   } catch (e) {
@@ -114,7 +111,7 @@ const generateQuiz = async (req, res) => {
 const interviewPrep = async (req, res) => {
   try {
     const searchData = req.query; // Use req.query to access query parameters
-    console.log(searchData);
+
     const { difficulty, topic, subtopic } = searchData;
     const searchQuery = `Imagine you are an product based company interviewer and your 
         CEO told you to Generate very unique 10 ${topic} questions which subtopic should be ${subtopic} with 
@@ -137,7 +134,6 @@ const interviewPrep = async (req, res) => {
       frequency_penalty: 0,
       presence_penalty: 0,
     });
-    console.log(response.choices[0].message.content);
     const ans = response?.choices[0]?.message?.content;
     return res.status(200).json({ ans });
   } catch (e) {
@@ -148,7 +144,6 @@ const interviewPrep = async (req, res) => {
 const generateAndDownloadDSACodes =  async (req, res) => {
     try {
       const { subtopic, topic, difficulty } = req.query;
-      console.log(req.query);
       const searchQuery = `Imagine you are a senior software engineer at QGenius and now you want to hire new software 
         engineers, your job is to must create exact 3 new and unique which is not available on any other platform ${subtopic} ${topic} ${difficulty} 
         questions these should be in story telling format with provide solution approach and 3-3 test case with edge cases if available according
@@ -171,8 +166,6 @@ const generateAndDownloadDSACodes =  async (req, res) => {
         frequency_penalty: 0,
         presence_penalty: 0,
       });
-  
-      console.log(response.choices[0].message.content);
       const ans = response?.choices[0]?.message?.content;
   
       // Write the response to a .txt file
@@ -199,7 +192,6 @@ const generateAndDownloadDSACodes =  async (req, res) => {
 const generateAndDownloadDevelopmentCodes = async (req, res) => {
     try {
       const { subtopic, topic, difficulty } = req.query;
-      console.log(req.query);
       const searchQuery = `Imagine you are a senior software engineer at QGenius and now you want to hire new frontend 
         engineers, your job is to must create exact 3 new and unique and triky ${difficulty} ${subtopic} ${topic}  
         interview   questions, and at the end
@@ -222,7 +214,6 @@ const generateAndDownloadDevelopmentCodes = async (req, res) => {
         presence_penalty: 0,
       });
   
-      console.log(response.choices[0].message.content);
       const ans = response?.choices[0]?.message?.content;
   
       // Write the response to a .txt file
@@ -249,7 +240,6 @@ const generateAndDownloadDevelopmentCodes = async (req, res) => {
 const generateAndDownloadSystemDesignCodes = async (req, res) => {
     try {
       const { topic, subtopic, difficulty } = req.query;
-      console.log(req.query);
       const searchQuery = `Imagine you are CTO of QGenius and have 30+ years of experience and now you want to hire senior software engineers, 
         your job is to must
         create exact 3 new and unique  ${topic} ${subtopic} ${difficulty} interview questions in good story format which are not available on 
@@ -272,7 +262,6 @@ const generateAndDownloadSystemDesignCodes = async (req, res) => {
         presence_penalty: 0,
       });
   
-      console.log(response.choices[0].message.content);
       const ans = response?.choices[0]?.message?.content;
   
       // Write the response to a .txt file
@@ -299,7 +288,6 @@ const generateAndDownloadSystemDesignCodes = async (req, res) => {
 const generateDSAQuestions = async (req, res) => {
     try {
       const { subtopic, topic, difficulty } = req.query;
-      console.log(req.query);
       const searchQuery = `generate a DSA question with these needs: topic ${subtopic} as h3 and have a class name ${topic} difficulty level 
         that is  ${difficulty}  in the h4 tag and should have the class name "difficulty", then detailed question (coding bases, not theory bases) with a 
         p tag and have the class "question" , remember that the question is in detail or accordingly and please don't provde topic within the 
@@ -312,7 +300,7 @@ const generateDSAQuestions = async (req, res) => {
          means <code> within <pre>, faqs another div block that have the class "faqs", have h3 title that is "FAQs" or "FAQ" accordingly with the 
          class "faq-title" and for the question use the class "faq-question"  as p tag and for answer use "faq-answer".`;
   
-      console.log("khaliq");
+     
       const response = await openai.chat.completions.create({
         model: "gpt-3.5-turbo-16k-0613",
         messages: [
@@ -328,7 +316,6 @@ const generateDSAQuestions = async (req, res) => {
         presence_penalty: 0,
       });
   
-      console.log(response.choices[0].message.content);
       const ans = response?.choices[0]?.message?.content;
       return res.status(200).json({ ans });
     } catch (error) {
