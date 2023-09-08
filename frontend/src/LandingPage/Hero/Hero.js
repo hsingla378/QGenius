@@ -127,7 +127,7 @@ export default function Hero({
             w={"full"}
           >
             <Box position={"relative"} w={"80%"}>
-              <Image alt={"Hero Image"} src="./hero_image.png" />
+              <Image alt={"Hero Image"} src="./hero_image.webp" />
             </Box>
           </Flex>
         </Stack>
