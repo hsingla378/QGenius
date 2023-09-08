@@ -17,7 +17,16 @@ const SearchAnswer = ({ answer = "", queryAsked = "", loading, heading }) => {
   console.log(updatedQueryAsked);
   return (
     <>
-      <Container maxW={"5xl"} py="4" px="10" border="2px" my={10} rounded="lg">
+      <Container
+        maxW={"5xl"}
+        py="4"
+        px="10"
+        border="2px"
+        my={10}
+        rounded="lg"
+        className="search-answer"
+        // style={{ maxWidth: "90%" }}
+      >
         {loading ? (
           <Stack>
             <Skeleton height="20px" />

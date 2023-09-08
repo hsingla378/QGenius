@@ -1,5 +1,6 @@
 import React from "react";
 import { Container, VStack, Stack, Skeleton } from "@chakra-ui/react";
+import "./QustionContainer.css"
 function QuestionCointainer({
   answer = "",
   queryAsked = "",
@@ -8,7 +9,7 @@ function QuestionCointainer({
 }) {
   return (
     <>
-      <Container maxW={"7xl"} p="12" border="2px" my={10} rounded="lg">
+      <Container maxW={"3xl"} p="12" border="2px" my={10} rounded="lg"  className="question-container">
         {loading ? (
           <Stack>
             <Skeleton height="20px" />

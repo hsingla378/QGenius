@@ -100,6 +100,7 @@ export default function SearchBox({ SetAnswer, setQueryAsked, setLoading }) {
             h={8}
             color="green.500"
             onClick={handleSearchButton}
+            style={{ cursor: "pointer" }}
           />
         </InputRightElement>
       </InputGroup>

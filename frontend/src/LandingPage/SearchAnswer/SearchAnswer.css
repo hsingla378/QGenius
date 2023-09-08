@@ -25,6 +25,10 @@ pre {
   padding: 0.5em 3em;
 }
 
+code {
+  contain: content;
+}
+
 .question,
 .examples,
 .constraints,
@@ -56,4 +60,12 @@ pre {
 
 .faq-answer {
   font-weight: normal;
+}
+
+@media (max-width: 1024px) {
+  .search-answer {
+    max-width: 90% !important;
+    overflow: auto;
+    /* contain: content; */
+  }
 }
