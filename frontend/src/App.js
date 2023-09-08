@@ -5,6 +5,7 @@ import DSA from "./DSA/DSA";
 import Quiz from "./Quiz/Quiz";
 import Questions from "./GenerateQuestions/GenerateQuestions";
 import { PrivacyPolicy } from "./PrivacyPolicy";
+import { FeedbackForm } from "./FeedbackForm";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/questions-generator" element={<Questions />} />
         <Route path="/content" element={<Questions />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="/feedback-form" element={<FeedbackForm />} />
       </Routes>
     </Router>
   );
