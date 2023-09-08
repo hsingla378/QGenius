@@ -22,13 +22,7 @@ QGenius provides a personalized learning experience by allowing you to customize
 
 ## How our website works ?
 
-<iframe
-  width="560"
-  height="315"
-  src="https://www.youtube.com/embed/6sA8MJHVv6k?si=xJ1_IrwLR8xUEeDo"
-  frameborder="0"
-  allowfullscreen
-></iframe>
+[![QGenius Website Demo](https://img.youtube.com/vi/6sA8MJHVv6k/0.jpg)](https://www.youtube.com/watch?v=6sA8MJHVv6k)
 
 ## Technologies Used
 
