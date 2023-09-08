@@ -14,7 +14,6 @@ const SearchAnswer = ({ answer = "", queryAsked = "", loading, heading }) => {
 
   let updatedQueryAsked =
     queryAsked.charAt(0).toUpperCase() + queryAsked.slice(1);
-  console.log(updatedQueryAsked);
   return (
     <>
       <Container

@@ -23,7 +23,6 @@ export default function SearchBox({ SetAnswer, setQueryAsked, setLoading }) {
       `${API_URL}/askmeanything?q=${text}` 
     );
     const data = await response.json();
-    console.log("response answer", data.ans);
     SetAnswer(data.ans);
     setQueryAsked(text);
     setLoading(false);
@@ -33,7 +32,6 @@ export default function SearchBox({ SetAnswer, setQueryAsked, setLoading }) {
     e.preventDefault(); // prevent
     if (!searchQuery) return;
     fetchData(searchQuery);
-    console.log(searchQuery);
   };
 
   const handleSearchQuery = (e) => {

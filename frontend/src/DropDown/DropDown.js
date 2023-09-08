@@ -90,7 +90,7 @@ export const DropDown = ({
               }}
             >
               {quizData.map((data) => {
-                return <option value={data.topic}>{data.topic}</option>;
+                return <option key={data.topic} value={data.topic}>{data.topic}</option>;
               })}
             </Select>
           </Container>
@@ -112,12 +112,12 @@ export const DropDown = ({
                       (category) => category.topic === selectedOptions.topic
                     )[0]
                     .subtopics.map((subtopic) => {
-                      return <option value={subtopic}>{subtopic}</option>;
+                      return <option key={subtopic} value={subtopic}>{subtopic}</option>;
                     })
                 : quizData
                     .filter((category) => category.topic === "DSA")[0]
                     .subtopics.map((subtopic) => {
-                      return <option value={subtopic}>{subtopic}</option>;
+                      return <option key={subtopic} value={subtopic}>{subtopic}</option>;
                     })}
             </Select>
           </Container>
@@ -149,7 +149,7 @@ export const DropDown = ({
             bg={"green.500"}
             _hover={{ bg: "green.500" }}
             onClick={() => {
-              if (window.location.pathname !== "/Content") {
+              if (window.location.pathname !== "/content") {
                 handleSearch(selectedOptions);
               } else {
                 downloader(selectedOptions);

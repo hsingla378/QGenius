@@ -120,10 +120,10 @@ export default function Quiz() {
               <h1>{element.question}</h1>
               <RadioGroup defaultValue="">
                 <Stack>
-                  {element.options.map((option) => {
+                  {element.options.map((option, index) => {
                     return (
                       <Radio
-                        key={option}
+                        key={index}
                         value={option}
                         onChange={() => checkAnswer(index, option)}
                       >

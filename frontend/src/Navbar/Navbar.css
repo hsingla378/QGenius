@@ -18,3 +18,12 @@
 .navbar-right {
   display: flex;
 }
+
+nav a {
+  text-decoration: none !important;
+  transition: color 0.2s ease-in-out !important;
+}
+
+nav a:hover {
+  color: #38a169 !important;
+}

@@ -1,4 +1,3 @@
-"use client";
 import {
   Box,
   Flex,
@@ -17,40 +16,22 @@ import {
   MoonIcon,
   ChatIcon,
 } from "@chakra-ui/icons";
-import { Link as ReactRouterLink } from "react-router-dom";
+import { Link as ReactRouterLink, useLocation } from "react-router-dom";
 import { Link as ChakraLink } from "@chakra-ui/react";
-
 import "./Navbar.css";
 
 const Links = [
+  { name: "Home", query: "" },
   { name: "DSA", query: "dsa" },
   { name: "Play Quiz", query: "quiz" },
   { name: "Questions Generator", query: "questions-generator" },
-  { name: "Content", query: "Content" },
+  { name: "Download Content", query: "content" },
 ];
-
-const NavLink = (props) => {
-  const { children } = props;
-  return (
-    <Box
-      as="a"
-      px={2}
-      py={1}
-      rounded={"md"}
-      _hover={{
-        textDecoration: "none",
-        // bg: useColorModeValue("gray.200", "gray.700"),
-      }}
-      href={"#"}
-    >
-      {children}
-    </Box>
-  );
-};
 
 export default function WithAction({ loading }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { colorMode, toggleColorMode } = useColorMode();
+  const location = useLocation(); // Get the current route location
 
   return (
     <>
@@ -60,14 +41,10 @@ export default function WithAction({ loading }) {
           isIndeterminate
           position="sticky"
           top={0}
-          colorScheme="green"
+          colorScheme="green.500"
         />
       )}
-      <Box
-        // bg={useColorModeValue("gray.100", "gray.900")}
-        px={5}
-        py={3}
-      >
+      <Box px={5} py={3}>
         <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
           <ChakraLink
             as={ReactRouterLink}
@@ -104,8 +81,17 @@ export default function WithAction({ loading }) {
                   fontWeight={600}
                 >
                   {Links.map((link) => (
-                    <ChakraLink as={ReactRouterLink} to={"/" + link.query}>
-                      <NavLink key={link.name}>{link.name}</NavLink>
+                    <ChakraLink
+                      key={link.name}
+                      as={ReactRouterLink}
+                      to={"/" + link.query}
+                      color={
+                        location.pathname === "/" + link.query
+                          ? "green.500"
+                          : ""
+                      }
+                    >
+                      {link.name}
                     </ChakraLink>
                   ))}
                 </HStack>
@@ -118,8 +104,15 @@ export default function WithAction({ loading }) {
           <Box pb={4} display={{ md: "none" }}>
             <Stack as={"nav"} spacing={4}>
               {Links.map((link) => (
-                <ChakraLink as={ReactRouterLink} to={"/" + link.query}>
-                  <NavLink key={link.name}>{link.name}</NavLink>
+                <ChakraLink
+                  key={link.name}
+                  as={ReactRouterLink}
+                  to={"/" + link.query}
+                  color={
+                    location.pathname === "/" + link.query ? "green.500" : ""
+                  }
+                >
+                  {link.name}
                 </ChakraLink>
               ))}
             </Stack>

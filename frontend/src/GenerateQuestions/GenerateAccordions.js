@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 "use client";
 
 import {
@@ -43,11 +44,10 @@ export default function GenerateAccordions({ questionsList, loading }) {
             rounded="lg"
             // backgroundColor="tomato"
           >
-            {console.log(questionsList, "inside accordian")}
             {questionsList.questions.length ? (
-              questionsList.questions.map((question) => {
+              questionsList.questions.map((question, index) => {
                 return (
-                  <AccordionItem border="1px solid" my={4}>
+                  <AccordionItem key={index} border="1px solid" my={4}>
                     <AccordionButton
                       display="flex"
                       alignItems="center"
@@ -69,7 +69,7 @@ export default function GenerateAccordions({ questionsList, loading }) {
               })
             ) : (
               <Text display="none">
-                console.log("Test")
+                console.log("There is a problem while loadig the questions. Please try again...")
                 {/* {toast({
                   title: `There is some issue in backend, please try again...`,
                   status: "error",
@@ -78,9 +78,9 @@ export default function GenerateAccordions({ questionsList, loading }) {
               </Text>
             )}
             {/* {questionsList.questions.length > 0
-              ? questionsList.questions.map((question) => {
+              ? questionsList.questions.map((question, index) => {
                   return (
-                    <AccordionItem>
+                    <AccordionItem key={index}>
                       <AccordionButton
                         display="flex"
                         alignItems="center"

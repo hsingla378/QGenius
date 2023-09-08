@@ -1,7 +1,5 @@
 "use client";
 
-import { Image } from "@chakra-ui/react";
-
 import {
   Box,
   Center,

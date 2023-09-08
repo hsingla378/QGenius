@@ -34,7 +34,6 @@ export default function Hero({
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const handleToogleClick = () => {
-    console.log("click to toggle");
     setToggleResonce(!toggleResonce);
     setToggleAnswerSection(!toggleAnswerSection);
   };
