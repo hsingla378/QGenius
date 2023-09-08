@@ -68,7 +68,7 @@ export default function Footer() {
           </ChakraLink>
         </Flex>
         <Text pt={6} fontSize={"md"} textAlign={"center"}>
-          © 2023 QGenius. All rights reserved
+          Made with ❤️ By Supporters
         </Text>
       </Box>
     </Box>

@@ -7,6 +7,7 @@ import {
   Box,
 } from "@chakra-ui/react";
 import { quizData } from "../quizData";
+import { API_URL } from "../constants";
 
 export const DropDown = ({
   type,
@@ -46,27 +47,27 @@ export const DropDown = ({
     switch (data.topic) {
       case "DSA":
         downloadData(
-          `http://localhost:8082/genrate-and-download-codes-dsa?topic=${data.topic}&subtopic${data.subtopic}&difficulty=${data.difficulty}`
+          `${API_URL}/genrate-and-download-codes-dsa?topic=${data.topic}&subtopic=${data.subtopic}&difficulty=${data.difficulty}`
         );
         break;
       case "High Level Design":
         downloadData(
-          `http://localhost:8082/genrate-and-download-codes-system-design?topic=${data.topic}&subtopic${data.subtopic}&difficulty=${data.difficulty}`
+          `${API_URL}/genrate-and-download-codes-system-design?topic=${data.topic}&subtopic=${data.subtopic}&difficulty=${data.difficulty}`
         );
         break;
       case "Low Level Design":
         downloadData(
-          `http://localhost:8082/genrate-and-download-codes-system-design?topic=${data.topic}&subtopic${data.subtopic}&difficulty=${data.difficulty}`
+          `${API_URL}/genrate-and-download-codes-system-design?topic=${data.topic}&subtopic=${data.subtopic}&difficulty=${data.difficulty}`
         );
         break;
       case "Backend":
         downloadData(
-          `http://localhost:8082/genrate-and-download-codes-developement?topic=${data.topic}&subtopic${data.subtopic}&difficulty=${data.difficulty}`
+          `${API_URL}/genrate-and-download-codes-developement?topic=${data.topic}&subtopic=${data.subtopic}&difficulty=${data.difficulty}`
         );
         break;
       case "Frontend":
         downloadData(
-          `http://localhost:8082/genrate-and-download-codes-developement?topic=${data.topic}&subtopic${data.subtopic}&difficulty=${data.difficulty}`
+          `${API_URL}/genrate-and-download-codes-developement?topic=${data.topic}&subtopic=${data.subtopic}&difficulty=${data.difficulty}`
         );
         break;
       default:

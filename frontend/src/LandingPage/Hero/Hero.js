@@ -81,9 +81,9 @@ export default function Hero({
               </Text>
             </Heading>
             <Text color={"gray.500"}>
-              QGenius is a comprehensive platform that offers generating DSA
-              questions generation, Quiz playing, and Interview question
-              generation to enhance your learning experience.
+              QGenius is a comprehensive platform that offers DSA question
+              generation, interview quiz playing, and the generation of new and
+              unique interview questions to enhance your learning experience.
             </Text>
             <SearchBox
               SetAnswer={SetAnswer}

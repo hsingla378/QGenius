@@ -13,6 +13,7 @@ import Footer from "../Footer/Footer";
 import { DropDown } from "../DropDown/DropDown";
 import { useState } from "react";
 import GenerateAccordions from "./GenerateAccordions";
+import { API_URL } from "../constants";
 
 export default function Question() {
   const [selectedOptions, setSelectedOptions] = useState({
@@ -26,7 +27,7 @@ export default function Question() {
     try {
       setLoading(true);
       let responce = await fetch(
-        `http://localhost:8082/interview-prep/?difficulty=${selectedOptions.difficulty}&topic=${selectedOptions.topic}&subtopic=${selectedOptions.subtopic}`
+        `${API_URL}/interview-prep/?difficulty=${selectedOptions.difficulty}&topic=${selectedOptions.topic}&subtopic=${selectedOptions.subtopic}`
       );
       let responseData = await responce.json();
 

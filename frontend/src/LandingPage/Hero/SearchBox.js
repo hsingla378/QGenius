@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { Input, InputGroup, InputRightElement } from "@chakra-ui/react";
 import { Search2Icon } from "@chakra-ui/icons";
+import { API_URL } from "../../constants";
 
 export default function SearchBox({ SetAnswer, setQueryAsked, setLoading }) {
   const [searchQuery, setSearchQuery] = useState("");
@@ -19,7 +20,7 @@ export default function SearchBox({ SetAnswer, setQueryAsked, setLoading }) {
   const fetchData = async (text) => {
     setLoading(true);
     const response = await fetch(
-      "http://localhost:8082/askmeanything?q=" + text
+      `${API_URL}/askmeanything?q=${text}` 
     );
     const data = await response.json();
     console.log("response answer", data.ans);

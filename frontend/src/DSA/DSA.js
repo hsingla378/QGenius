@@ -13,6 +13,7 @@ import Footer from "../Footer/Footer";
 import { DropDown } from "../DropDown/DropDown";
 import { useState } from "react";
 import SearchAnswer from "../LandingPage/SearchAnswer/SearchAnswer";
+import { API_URL } from "../constants";
 
 export default function DSA() {
   const [loading, setLoading] = useState(false);
@@ -24,7 +25,7 @@ export default function DSA() {
   const handleSearchData = async () => {
     setLoading(true);
     let response = await fetch(
-      `http://localhost:8082/generate-dsa-questions/?difficulty=${selectedOptions.difficulty}&topic=${selectedOptions.subtopic}&numofquestion=1`
+      `${API_URL}/generate-dsa-questions/?difficulty=${selectedOptions.difficulty}&topic=${selectedOptions.subtopic}&numofquestion=1`
     );
     let responseData = await response.json();
     setData(responseData.ans);
