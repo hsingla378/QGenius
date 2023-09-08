@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from "react";
-import { Input, InputGroup, InputRightElement, Box } from "@chakra-ui/react";
+import { Input, InputGroup, InputRightElement } from "@chakra-ui/react";
 import { Search2Icon } from "@chakra-ui/icons";
 import { API_URL } from "../../constants";
 
@@ -8,7 +8,6 @@ export default function SearchBox({ SetAnswer, setQueryAsked, setLoading }) {
   const [searchQuery, setSearchQuery] = useState("");
   const [placeholderIndex, setPlaceholderIndex] = useState(0);
   const [placeholderText, setPlaceholderText] = useState("");
-  const [showRefreshMessage, setShowRefreshMessage] = useState(false);
 
   const sentences = [
     "What does OOP stand for?",
@@ -73,17 +72,17 @@ export default function SearchBox({ SetAnswer, setQueryAsked, setLoading }) {
     };
   }, [placeholderIndex]);
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      if (!showRefreshMessage) {
-        setShowRefreshMessage(true);
-      }
-    }, 30000);
+  // useEffect(() => {
+  //   const timer = setTimeout(() => {
+  //     if (!showRefreshMessage) {
+  //       setShowRefreshMessage(true);
+  //     }
+  //   }, 30000);
 
-    return () => {
-      clearTimeout(timer);
-    };
-  }, [showRefreshMessage]);
+  //   return () => {
+  //     clearTimeout(timer);
+  //   };
+  // }, [showRefreshMessage]);
 
   return (
     <form onSubmit={handleSearchButton}>
@@ -107,12 +106,6 @@ export default function SearchBox({ SetAnswer, setQueryAsked, setLoading }) {
           />
         </InputRightElement>
       </InputGroup>
-      {showRefreshMessage && (
-        <Box mt={2} color="red">
-          {setLoading(false)}
-          There is some issue in the backend. Please try refreshing the page...
-        </Box>
-      )}
     </form>
   );
 }
