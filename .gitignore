@@ -1,4 +1,9 @@
 node_modules
 .env
 .vercel
-android.keystore
+
+# BUCK
+buck-out/
+\.buckd/
+*.keystore.       <-- This means all keystore files are included in GITIGNORE list.
+!debug.keystore.  <-- This line means debug.keystore is not included in GITIGNORE list. s
