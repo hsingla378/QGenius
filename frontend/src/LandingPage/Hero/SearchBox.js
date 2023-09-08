@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from "react";
-import { Input, InputGroup, InputRightElement } from "@chakra-ui/react";
+import { Input, InputGroup, InputRightElement, Box } from "@chakra-ui/react";
 import { Search2Icon } from "@chakra-ui/icons";
 import { API_URL } from "../../constants";
 
@@ -8,10 +8,11 @@ export default function SearchBox({ SetAnswer, setQueryAsked, setLoading }) {
   const [searchQuery, setSearchQuery] = useState("");
   const [placeholderIndex, setPlaceholderIndex] = useState(0);
   const [placeholderText, setPlaceholderText] = useState("");
-  // const [loading, setLoading] = useState(false);
+  const [showRefreshMessage, setShowRefreshMessage] = useState(false);
+
   const sentences = [
     "What does OOP stand for?",
-    " What is SQL used for?",
+    "What is SQL used for?",
     "What's a boolean?",
     "What's a loop that runs indefinitely?",
     "What's a database primary key?",
@@ -19,9 +20,7 @@ export default function SearchBox({ SetAnswer, setQueryAsked, setLoading }) {
 
   const fetchData = async (text) => {
     setLoading(true);
-    const response = await fetch(
-      `${API_URL}/askmeanything?q=${text}` 
-    );
+    const response = await fetch(`${API_URL}/askmeanything?q=${text}`);
     const data = await response.json();
     SetAnswer(data.ans);
     setQueryAsked(text);
@@ -29,7 +28,7 @@ export default function SearchBox({ SetAnswer, setQueryAsked, setLoading }) {
   };
 
   const handleSearchButton = (e) => {
-    e.preventDefault(); // prevent
+    e.preventDefault();
     if (!searchQuery) return;
     fetchData(searchQuery);
   };
@@ -39,10 +38,9 @@ export default function SearchBox({ SetAnswer, setQueryAsked, setLoading }) {
   };
 
   useEffect(() => {
-    // Create a timer to cycle through sentences every few seconds
     const timer = setInterval(() => {
       setPlaceholderIndex((prevIndex) => (prevIndex + 1) % sentences.length);
-    }, 4000); // Change the delay (in milliseconds) as needed
+    }, 4000);
 
     return () => {
       clearInterval(timer);
@@ -50,7 +48,6 @@ export default function SearchBox({ SetAnswer, setQueryAsked, setLoading }) {
   }, []);
 
   useEffect(() => {
-    // Typing effect for the placeholder text
     let currentIndex = 0;
     let typingInterval;
 
@@ -65,18 +62,28 @@ export default function SearchBox({ SetAnswer, setQueryAsked, setLoading }) {
       }
     };
 
-    // Clear previous typing effect
     setPlaceholderText("");
 
-    // Start typing effect after a short delay
     setTimeout(() => {
-      typingInterval = setInterval(typePlaceholder, 100); // Adjust the typing speed (in milliseconds) as needed
-    }, 500); // Adjust the delay (in milliseconds) before starting the typing effect as needed
+      typingInterval = setInterval(typePlaceholder, 100);
+    }, 500);
 
     return () => {
       clearInterval(typingInterval);
     };
   }, [placeholderIndex]);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (!showRefreshMessage) {
+        setShowRefreshMessage(true);
+      }
+    }, 30000);
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [showRefreshMessage]);
 
   return (
     <form onSubmit={handleSearchButton}>
@@ -91,9 +98,6 @@ export default function SearchBox({ SetAnswer, setQueryAsked, setLoading }) {
           rounded={"full"}
         />
         <InputRightElement width="4.5rem" h="100%">
-          {/* <Button h="1.75rem" size="sm" onClick={handleSearchButton}>
-            Search
-          </Button> */}
           <Search2Icon
             w={8}
             h={8}
@@ -103,6 +107,12 @@ export default function SearchBox({ SetAnswer, setQueryAsked, setLoading }) {
           />
         </InputRightElement>
       </InputGroup>
+      {showRefreshMessage && (
+        <Box mt={2} color="red">
+          {setLoading(false)}
+          There is some issue in the backend. Please try refreshing the page...
+        </Box>
+      )}
     </form>
   );
 }
