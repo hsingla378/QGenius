@@ -13,9 +13,9 @@
   "backgroundColor": "#1A202C",
   "enableNotifications": true,
   "startUrl": "/",
-  "iconUrl": "https://qgenius.vercel.app/QGenius_512.png",
+  "iconUrl": "https://qgenius.vercel.app/QGenius_maskable.png",
   "maskableIconUrl": "https://qgenius.vercel.app/QGenius_maskable.png",
-  "monochromeIconUrl": "https://qgenius.vercel.app/QGenius_monochrome_1024.png",
+  "monochromeIconUrl": "https://qgenius.vercel.app/QGenius_maskable.png",
   "splashScreenFadeOutDuration": 300,
   "signingKey": {
     "path": "D:\\QGenius\\android.keystore",
@@ -27,20 +27,16 @@
   "generatorApp": "bubblewrap-cli",
   "webManifestUrl": "https://qgenius.vercel.app/manifest.json",
   "fallbackType": "customtabs",
-  "features": {
-    "playBilling": {
-      "enabled": true
-    }
-  },
+  "features": {},
   "alphaDependencies": {
-    "enabled": true
+    "enabled": false
   },
   "enableSiteSettingsShortcut": true,
   "isChromeOSOnly": false,
   "isMetaQuest": false,
   "fullScopeUrl": "https://qgenius.vercel.app/",
   "minSdkVersion": 19,
-  "orientation": "any",
+  "orientation": "default",
   "fingerprints": [],
   "additionalTrustedOrigins": [],
   "retainedBundles": [],

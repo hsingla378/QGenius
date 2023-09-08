@@ -47,7 +47,7 @@ def twaManifest = [
     // 'customtabs' and 'webview'.
     fallbackType: 'customtabs',
     enableSiteSettingsShortcut: 'true',
-    orientation: 'any',
+    orientation: 'default',
 ]
 
 android {
@@ -202,8 +202,6 @@ repositories {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    
-        implementation 'com.google.androidbrowserhelper:billing:1.0.0-alpha10'
     
         implementation 'com.google.androidbrowserhelper:androidbrowserhelper:2.5.0'
     
